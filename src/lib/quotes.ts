@@ -124,6 +124,5 @@ const QUOTES = [
 export function getTimeBasedQuote() {
   // QUOTE CHANGES ONCE EVERY 12 HOURS
   const index = Math.floor(Date.now() / (1000 * 60 * 60 * 12)) % QUOTES.length;
-  console.log(index)
   return QUOTES[index];
 }

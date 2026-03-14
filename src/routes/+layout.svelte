@@ -43,7 +43,7 @@
 	{#key page.url}
 		<div
 			class="flex flex-col w-full"
-			in:fly={{ y: 150, duration: 200, delay: 0, easing: backOut }}
+			in:fly={{ y: 120, duration: 200, delay: 50, easing: backOut }}
 		>
 			{@render children()}
 		</div>
