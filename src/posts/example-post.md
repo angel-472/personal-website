@@ -1,6 +1,6 @@
 ---
 title: "Building a Personal Brand as a Developer in 2026"
-creationDate: "2026-03-01"
+creationDate: "2026-03-13"
 categories:
   - dev
   - claude

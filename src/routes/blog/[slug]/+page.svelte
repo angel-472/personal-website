@@ -6,6 +6,8 @@
   let { data } = $props();
 </script>
 
+<!-- Todo: Add heading that will render the post title, date, cover image, etc -->
+
 <div class="blog-post w-full p-6 sm:px-12 lg:px-64">
   {@render data.post.default()}
 </div>
