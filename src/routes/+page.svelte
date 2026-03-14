@@ -7,6 +7,10 @@
 
 </script>
 
+<svelte:head>
+  <title>Home - Diaza</title>
+  <meta name="description" content="Thoughts, tutorials, and musings on software development, technology, and life." />
+</svelte:head>
 
 <main aria-label="Home page" class="w-full flex flex-col gap-8">
   <!-- Hero Section -->

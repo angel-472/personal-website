@@ -1,6 +1,6 @@
 ---
 title: "Second Post"
-creationDate: "2024-06-01"
+creationDate: "2026-03-01"
 categories:
   - svelte
   - sveltekit

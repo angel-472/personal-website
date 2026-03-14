@@ -8,7 +8,6 @@ export async function GET() {
 async function getPosts() {
   let posts = [];
   const paths = import.meta.glob('/src/posts/*.md', { eager: true });
-  console.log(paths)
   for (const path in paths) {
     const post: any = paths[path];
     const metadata = post.metadata;
