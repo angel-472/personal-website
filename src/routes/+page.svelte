@@ -1,14 +1,14 @@
 <script>
   import { getTimeBasedQuote } from '$lib/quotes';
   let statusData = {
-    status: "Working on the site you're currently visiting! Thanks for being here.",
+    status: "Thinking of updating my agency's landing page design for the 50th time 😅.",
     lastUpdated: "2026-MAR-11"
   }
 
 </script>
 
 
-<main aria-label="Home page" class="w-full flex flex-col">
+<main aria-label="Home page" class="w-full flex flex-col gap-8">
   <!-- Hero Section -->
   <section class="flex flex-col" aria-label="Hero Section">
     <h1 class="text-6xl font-bold">Hello! I'm Angel Diaz.</h1>
@@ -25,9 +25,12 @@
   
   <!-- Quote Section -->
   <section class="flex flex-col mt-8" aria-label="Quote Section">
-    <h2 class="font-bold uppercase text-lg">Inspirational Quote</h2>
-    <p class="text-gray-900 mt-2">"{getTimeBasedQuote().quote}"</p>
-    <span class="text-gray-400 text-xs uppercase">— {getTimeBasedQuote().author}</span>
+    <h2 class="font-bold uppercase text-xl">Inspirational Quote</h2>
+    <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-700 mt-2">
+      "{getTimeBasedQuote().quote}"<br>
+      <span class="text-gray-400 text-xs uppercase">— {getTimeBasedQuote().author}</span>
+    </blockquote>
+    
   </section>
 
   <!-- Recent Projects Section -->
