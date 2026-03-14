@@ -7,6 +7,8 @@ categories:
 published: true
 ---
 
+⚠️ This renders weird because i haven't actually built the UI for rendering the blog post details and the cover image. Anyway i'm tired i'll do it tomorrow.
+
 # Building a Personal Brand as a Developer in 2026
 
 *March 13, 2026 · 5 min read · Angel Díaz*
