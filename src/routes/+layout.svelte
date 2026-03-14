@@ -4,6 +4,7 @@
 	import { Menu } from 'lucide-svelte';
 	import { page } from '$app/state';
 	import { fly } from 'svelte/transition'
+	import { backOut } from 'svelte/easing';
 
 	let { children } = $props();
 </script>
@@ -23,7 +24,7 @@
 	<header class="w-full flex mt-4 mb-8">
 		<nav class="flex border-b w-full py-4 justify-between items-center">
 			<a href="/" class="text-2xl font-bold">Diaza.</a>
-			<div aria-label="Main Navigation" class="hidden md:flex space-x-4">
+			<div aria-label="Main Navigation" class="hidden md:flex gap-6">
 				<a href="/about" class="text-gray-900 {page.url.pathname.toString().split('/')[1] === 'about' ? 'font-bold' : ''}">About</a>
 				<a href="/projects" class="text-gray-900 {page.url.pathname.toString().split('/')[1] === 'projects' ? 'font-bold' : ''}">Projects</a>
 				<a href="/blog" class="text-gray-900 {page.url.pathname.toString().split('/')[1] === 'blog' ? 'font-bold' : ''}">Blog</a>
@@ -42,7 +43,7 @@
 	{#key page.url}
 		<div
 			class="flex flex-col w-full"
-			in:fly={{ y: 150, duration: 200, delay: 100 }}
+			in:fly={{ y: 150, duration: 200, delay: 0, easing: backOut }}
 		>
 			{@render children()}
 		</div>
