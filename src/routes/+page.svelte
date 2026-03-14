@@ -16,10 +16,10 @@
     <!-- Current Status -->
     <div class="w-full bg-gray-900 text-white p-4 mt-8 flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-1 text-center" aria-label="Current Status">
       
-      <h2 class="font-bold uppercase">Status Update<span class="ml-2"></span></h2>
+      <h2 class="font-bold uppercase text-lg">Status Update<span class="ml-2"></span></h2>
       <!-- TODO: For longer statuses, scrolling news update style -->
-      <p class="text-gray-200">{statusData.status}</p>
-      <span class="text-gray-400 text-xs uppercase">Last Updated: {statusData.lastUpdated}</span>
+      <p class="">{statusData.status}</p>
+      <span class="text-gray-300 text-xs uppercase">Last Updated: {statusData.lastUpdated}</span>
     </div>
   </section>
   
