@@ -2,6 +2,8 @@
 	import favicon from '$lib/assets/favicon.svg';
   import "../app.css";
 	import { Menu } from 'lucide-svelte';
+	import { page } from '$app/state';
+	import { fly } from 'svelte/transition'
 
 	let { children } = $props();
 </script>
@@ -20,14 +22,13 @@
 <div id="layout-wrapper" class="w-full min-h-screen flex flex-col items-center bg-gray-50 px-6 sm:px-12 font-['Google_Sans']">
 	<header class="w-full flex mt-4 mb-8">
 		<nav class="flex border-b w-full py-4 justify-between items-center">
-			<div class="text-2xl font-bold">Diaza.</div>
+			<a href="/" class="text-2xl font-bold">Diaza.</a>
 			<div aria-label="Main Navigation" class="hidden md:flex space-x-4">
-				<a href="/" class="text-gray-700 hover:text-gray-900">Home</a>
-				<a href="/about" class="text-gray-700 hover:text-gray-900">About</a>
-				<a href="/projects" class="text-gray-700 hover:text-gray-900">Projects</a>
-				<a href="/blog" class="text-gray-700 hover:text-gray-900">Blog</a>
-				<a href="/photos" class="text-gray-700 hover:text-gray-900">Photos</a>
-				<a href="/now" class="text-gray-700 hover:text-gray-900">Now</a>
+				<a href="/about" class="text-gray-900 {page.url.pathname.toString().split('/')[1] === 'about' ? 'font-bold' : ''}">About</a>
+				<a href="/projects" class="text-gray-900 {page.url.pathname.toString().split('/')[1] === 'projects' ? 'font-bold' : ''}">Projects</a>
+				<a href="/blog" class="text-gray-900 {page.url.pathname.toString().split('/')[1] === 'blog' ? 'font-bold' : ''}">Blog</a>
+				<a href="/photos" class="text-gray-900 {page.url.pathname.toString().split('/')[1] === 'photos' ? 'font-bold' : ''}">Photos</a>
+				<a href="/now" class="text-gray-900 {page.url.pathname.toString().split('/')[1] === 'now' ? 'font-bold' : ''}">Now</a>
 				<div aria-label="Social Media Links" class="flex space-x-4">
 
 				</div>
@@ -37,5 +38,13 @@
 			</button>
 		</nav>
 	</header>
-	{@render children()}
+
+	{#key page.url}
+		<div
+			class="flex flex-col w-full"
+			in:fly={{ y: 150, duration: 200, delay: 100 }}
+		>
+			{@render children()}
+		</div>
+	{/key}
 </div>
