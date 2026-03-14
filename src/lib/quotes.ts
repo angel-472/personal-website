@@ -28,10 +28,6 @@ const QUOTES = [
     author: "Marcus Aurelius"
   },
   {
-    quote: "Man is not the creature of circumstances. Circumstances are the creatures of men.",
-    author: "Benjamin Disraeli"
-  },
-  {
     quote: "Fall seven times, stand up eight.",
     author: "Japanese Proverb"
   },
