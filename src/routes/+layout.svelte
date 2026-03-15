@@ -1,12 +1,18 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
   import "../app.css";
-	import { Menu } from 'lucide-svelte';
+	import { Menu, X } from 'lucide-svelte';
 	import { page } from '$app/state';
 	import { fly } from 'svelte/transition'
 	import { backOut } from 'svelte/easing';
 
 	let { children } = $props();
+
+
+	let showMobileMenu = $state(false);
+	function toggleMobileMenu() {
+		showMobileMenu = !showMobileMenu;
+	}
 </script>
 
 <svelte:head>
@@ -34,11 +40,27 @@
 
 				</div>
 			</div>
-			<button aria-label="Toggle Navigation" class="md:hidden text-gray-700 hover:text-gray-900">
-				<Menu size={24} />
+			<button aria-label="Toggle Navigation" class="md:hidden text-gray-700 hover:text-gray-900" onclick={toggleMobileMenu}>
+				{#if showMobileMenu}
+					<!-- Close Icon -->
+					<X size={24} />
+				{:else}
+					<!-- Menu Icon -->	
+					<Menu size={24} />
+				{/if}
 			</button>
 		</nav>
 	</header>
+	<!-- TODO: Improve / animate mobile menu -->
+	{#if showMobileMenu}
+		<div class="md:hidden w-full bg-white shadow-md rounded-lg p-4 mb-4 absolute top-20 left-0 z-10">
+			<a href="/about" class="block py-2 text-gray-900 {page.url.pathname.toString().split('/')[1] === 'about' ? 'font-bold' : ''}" onclick={toggleMobileMenu}>About</a>
+			<a href="/projects" class="block py-2 text-gray-900 {page.url.pathname.toString().split('/')[1] === 'projects' ? 'font-bold' : ''}" onclick={toggleMobileMenu}>Projects</a>
+			<a href="/blog" class="block py-2 text-gray-900 {page.url.pathname.toString().split('/')[1] === 'blog' ? 'font-bold' : ''}" onclick={toggleMobileMenu}>Blog</a>
+			<a href="/photos" class="block py-2 text-gray-900 {page.url.pathname.toString().split('/')[1] === 'photos' ? 'font-bold' : ''}" onclick={toggleMobileMenu}>Photos</a>
+			<a href="/now" class="block py-2 text-gray-900 {page.url.pathname.toString().split('/')[1] === 'now' ? 'font-bold' : ''}" onclick={toggleMobileMenu}>Now</a>
+		</div>
+	{/if}
 
 	{#key page.url}
 		<div
