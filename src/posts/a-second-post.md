@@ -1,10 +1,12 @@
 ---
 title: "Second Post"
-creationDate: "2026-03-01"
+creationDate: "2026-03-13"
 categories:
   - svelte
   - sveltekit
 published: true
+excerpt: "This is the second post. It is a test to see if the blog is working correctly. It should be rendered as a markdown file and should be accessible at /blog/second-post. This excerpt is very long and should be truncated in the blog post listing page. It should not be longer than 150 characters."
+coverImageUrl: "https://unsplash.com/photos/UWQP2mh5YJI/download?force=true&w=1920"
 ---
 
 

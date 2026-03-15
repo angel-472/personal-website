@@ -1,17 +1,15 @@
 ---
 title: "Building a Personal Brand as a Developer in 2026"
-creationDate: "2026-03-13"
+creationDate: "2026-03-14"
 categories:
   - dev
   - claude
 published: true
+coverImageUrl: "https://unsplash.com/photos/ESkw2ayO2As/download?force=true&w=1920"
+excerpt: "In 2026, building a personal brand as a developer is more important than ever. With the rise of AI and automation, standing out in a crowded market requires more than just technical skills. This post explores practical strategies for developers to build a personal brand that attracts opportunities and fosters meaningful connections."
 ---
 
 ⚠️ This renders weird because i haven't actually built the UI for rendering the blog post details and the cover image. Anyway i'm tired i'll do it tomorrow.
-
-# Building a Personal Brand as a Developer in 2026
-
-*March 13, 2026 · 5 min read · Angel Díaz*
 
 ---
 

@@ -2,17 +2,49 @@
   import { page } from '$app/state';
   import { fly } from 'svelte/transition'
   import { backOut } from 'svelte/easing';
+  import { formatDateWords } from '$lib/dateUtils';
+  import { onMount } from 'svelte';
 
   let { data } = $props();
+
+  let readingTime = $state(0);
+
+  onMount(() => {
+    const postElement = document.getElementById('post-content');
+    if (postElement) {
+      const text = postElement.innerText || '';
+      const words = text.trim().split(/\s+/).length;
+      console.log(words + " words")
+      readingTime = Math.ceil(words / 200); // Assuming 200 WPM reading speed
+      console.log("Estimated reading time: " + readingTime + " minutes")
+    }
+  });
 </script>
 
+<svelte:head>
+  <title>{data.post.metadata.title} - Diaza</title>
+  <meta name="description" content={data.post.metadata.excerpt ?? "A blog post on Diaza's personal website."} />
+</svelte:head>
+
 <!-- Todo: Add heading that will render the post title, date, cover image, etc -->
+<section class="sm:px-12 lg:px-64">
+  {#if data.post.metadata.coverImageUrl}
+    <img src={data.post.metadata.coverImageUrl} alt={`Cover image for ${data.post.metadata.title}`} class="w-full mb-8 object-cover object-center h-40 sm:h-80 aspect-video" />
+  {/if}
+  <h1 class="text-4xl font-bold mb-2">{data.post.metadata.title}</h1>
+  <!-- Post details -->
+  <div class="flex items-center gap-2 mb-6 text-gray-600">
+    <p>{formatDateWords(data.post.metadata.creationDate)}</p>
+    <span>•</span>
+    <p>{readingTime} min read</p>
+  </div>
+  <div id="post-content" class="blog-post w-full" aria-label={`Blog post content for ${data.post.metadata.title}`}>
+    {@render data.post.default()}
+  </div>
+</section>
 
-<div class="blog-post w-full p-6 sm:px-12 lg:px-64">
-  {@render data.post.default()}
-</div>
 
-
+<!-- Styles for blog post rendered markdown -->
 <style>
   .blog-post {
     color: #1a1a1a;

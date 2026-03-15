@@ -18,6 +18,6 @@ async function getPosts() {
       });
     }
   }
-  posts = posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  posts = posts.sort((a, b) => new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime());
   return posts;
 }

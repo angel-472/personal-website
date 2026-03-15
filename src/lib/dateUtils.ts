@@ -35,3 +35,13 @@ export function formatRelativeTime(date: string): string {
   
   return `${month} ${day}`;
 }
+
+export function formatDateWords(date){
+  date = new Date(date + 'T00:00-0800'); // Parse as local time
+  const formatted = date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
+  return formatted;
+}
