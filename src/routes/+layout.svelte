@@ -20,8 +20,8 @@
 	<title>Diaza - Personal Website</title>
 </svelte:head>
 
-<div id="layout-wrapper" class="w-full min-h-screen flex flex-col items-center bg-gray-50 px-6 sm:px-12 font-['Google_Sans']">
-	<header class="w-full flex mt-4 mb-8">
+<div id="layout-wrapper" class="w-full min-h-screen pb-48 flex flex-col items-center bg-gray-50 px-6 sm:px-12 font-['Google_Sans']">
+	<header class="w-full flex mt-4 mb-12">
 		<nav class="flex border-b w-full py-4 justify-between items-center">
 			<a href="/" class="text-2xl font-bold">Diaza.</a>
 			<div aria-label="Main Navigation" class="hidden md:flex gap-6">
@@ -42,10 +42,14 @@
 
 	{#key page.url}
 		<div
-			class="flex flex-col w-full mb-32"
+			class="flex flex-col w-full min-h-screen"
 			in:fly={{ y: 120, duration: 200, delay: 50, easing: backOut }}
 		>
 			{@render children()}
 		</div>
 	{/key}
 </div>
+<!-- SITE FOOTER -->
+<footer class="w-full py-8 text-center text-gray-100 bg-gray-900 rounded-t-2xl font-['Google_Sans'] font-light">
+	<p>&copy; {new Date().getFullYear()} Angel Diaz. All rights reserved.</p>
+</footer>
