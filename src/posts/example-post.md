@@ -9,10 +9,6 @@ coverImageUrl: "https://unsplash.com/photos/ESkw2ayO2As/download?force=true&w=19
 excerpt: "In 2026, building a personal brand as a developer is more important than ever. With the rise of AI and automation, standing out in a crowded market requires more than just technical skills. This post explores practical strategies for developers to build a personal brand that attracts opportunities and fosters meaningful connections."
 ---
 
-⚠️ This renders weird because i haven't actually built the UI for rendering the blog post details and the cover image. Anyway i'm tired i'll do it tomorrow.
-
----
-
 So you've got the skills. You can build full-stack apps, you know your way around a terminal, and you've got a couple of side projects collecting dust on GitHub. But nobody knows you exist.
 
 That's the actual problem most developers face — not a skills gap, but a **visibility gap**.
