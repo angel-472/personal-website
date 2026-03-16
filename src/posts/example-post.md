@@ -5,7 +5,7 @@ categories:
   - dev
   - claude
 published: true
-coverImageUrl: "https://unsplash.com/photos/ESkw2ayO2As/download?force=true&w=1920"
+coverImageUrl: "https://unsplash.com/photos/PhYq704ffdA/download?force=true&w=1920"
 excerpt: "In 2026, building a personal brand as a developer is more important than ever. With the rise of AI and automation, standing out in a crowded market requires more than just technical skills. This post explores practical strategies for developers to build a personal brand that attracts opportunities and fosters meaningful connections."
 ---
 
