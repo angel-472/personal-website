@@ -120,9 +120,9 @@
 	{/key}
 </div>
 <!-- SITE FOOTER -->
-<footer class="w-full py-8 text-center text-gray-100 bg-gray-900 rounded-t-2xl font-['Google_Sans'] flex flex-col items-center">
+<footer class="w-full py-8 text-center text-gray-100 bg-gray-900 font-['Google_Sans'] flex flex-col items-center">
 	<p class="text-sm">&copy; {new Date().getFullYear()} Angel Diaz. All rights reserved.</p>
 	
-	<div class="mt-4 text-xs text-gray-200 px-4 py-2 border border-gray-200 w-lg rounded-2xl">{weatherString}</div>
-	<p class="mt-24 text-xs text-gray-200">Somewhere between thought<br>and the thing thought brings to life — <br>that's where I live now</p>
+	<div class="mt-4 text-xs text-gray-200 px-4 py-2 border border-gray-200 w-2xs sm:w-lg rounded-2xl">{weatherString}</div>
+	<p class="mt-16 mb-4 text-xs text-gray-200 italic">Somewhere between thought<br>and the thing thought brings to life — <br>that's where I live now</p>
 </footer>
