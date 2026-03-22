@@ -1,8 +1,8 @@
 <script>
   import { getTimeBasedQuote } from '$lib/quotes';
   let statusData = {
-    status: "Thinking of updating my agency's landing page design for the 50th time 😅",
-    lastUpdated: "2026-MAR-13"
+    status: "Working on this site you're on right now! Expect new content and projects soon.",
+    lastUpdated: "2026-MAR-16"
   }
 
 </script>
