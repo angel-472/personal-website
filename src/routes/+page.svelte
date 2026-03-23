@@ -15,8 +15,8 @@
 <main aria-label="Home page" class="w-full flex flex-col gap-8">
   <!-- Hero Section -->
   <section class="flex flex-col" aria-label="Hero Section">
-    <h1 class="text-5xl sm:text-6xl font-bold">Hello! I'm Angel Diaz.</h1>
-    <p class="text-lg text-gray-600 mt-4">I'm a software engineer based in Puerto Rico. Welcome to my corner of the internet!</p>
+    <h1 class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold">Hello! I'm Angel Diaz.</h1>
+    <p class="text-xl text-gray-600 mt-4">I'm a software engineer based in Puerto Rico. Welcome to my corner of the internet!</p>
     <!-- Current Status -->
     <div class="w-full bg-gray-900 text-white p-4 mt-8 flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-1 text-center" aria-label="Current Status">
       
