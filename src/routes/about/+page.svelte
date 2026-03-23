@@ -9,7 +9,7 @@
     <p class="text-lg text-zinc-400 mt-4">Learn more about me and my journey as a software engineer.</p>
   </section>
   <section class="flex flex-col gap-4 text-lg text-zinc-300" aria-label="About Content">
-    <p>Hello there! I'm Angel Diaz, a software engineer based in Puerto Rico.</p>
+    <p>Hello there! I'm <span class="text-cyan-100">Angel Diaz</span>, a software engineer based in Puerto Rico.</p>
     <p>I'm interested in full stack web dev, game dev, system design, AI, and backend systems. In my free time I'm working on videogame prototypes to explore building game engine components from scratch and real time synchronization over the network. I also enjoy experimenting with backend development and system architecture.</p>
     <p>When I'm not coding, you can find me working out at the gym, I also enjoy running. I love to explore the outdoors with my friends and family and reading about technology, philosophy, and science fiction.</p>
 

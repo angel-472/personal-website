@@ -33,7 +33,7 @@
 </svelte:head>
 
 <div id="layout-wrapper" class="w-full min-h-screen pb-48 flex flex-col items-center bg-zinc-900 px-6 sm:px-12 font-['Rubik'] text-zinc-100">
-	<header class="w-full flex mt-4 mb-12">
+	<header class="sticky top-0 w-full flex pt-4 mb-12 bg-zinc-900/98 z-20">
 		<nav class="flex border-b border-zinc-800 w-full py-4 justify-between items-center">
 			<a href="/" class="text-2xl font-bold">Diaza.</a>
 			<div aria-label="Main Navigation" class="hidden md:flex gap-6">
@@ -78,9 +78,9 @@
 	{/key}
 </div>
 <!-- SITE FOOTER -->
-<footer class="w-full py-8 text-center text-zinc-400 bg-zinc-950 font-['Rubik'] flex flex-col items-center border-t border-zinc-900">
+<footer class="w-full py-8 text-center text-zinc-300 bg-zinc-950 font-['Rubik'] flex flex-col items-center border-t border-zinc-900">
 	<p class="text-sm">&copy; {new Date().getFullYear()} Angel Diaz. All rights reserved.</p>
 	
-	<div class="text-xs text-zinc-500 p-4 w-2xs sm:w-lg">{weatherString}</div>
-	<p class="mt-16 mb-4 text-xs text-zinc-500 italic">Somewhere between thought<br>and the thing thought brings to life — <br>that's where I live now</p>
+	<div class="text-xs text-zinc-400 p-4 w-2xs sm:w-lg">{weatherString}</div>
+	<p class="mt-16 mb-4 text-xs text-zinc-400 italic">Somewhere between thought<br>and the thing thought brings to life — <br>that's where I live now</p>
 </footer>
