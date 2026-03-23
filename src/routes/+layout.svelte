@@ -5,15 +5,29 @@
 	import { page } from '$app/state';
 	import { fly } from 'svelte/transition'
 	import { backOut } from 'svelte/easing';
-	import { getWeatherString } from '$lib/weatherString';
+	import { getWeatherString } from '$lib/weatherString';	
+	import { onMount } from 'svelte';
 
 	let { children } = $props();
 
 
 	let showMobileMenu = $state(false);
 	function toggleMobileMenu() {
-		showMobileMenu = !showMobileMenu;
+		setTimeout(() => {
+			showMobileMenu = !showMobileMenu;
+		}, 5);
 	}
+	onMount(() => {
+		// Close mobile menu when clicking outside it
+		document.addEventListener('click', (event) => {
+			const menu = document.getElementById('mobile-menu');
+			const button = document.getElementById('toggle-mobile-nav');
+			if (showMobileMenu == true && menu && !menu.contains(event.target)) {
+				showMobileMenu = false;
+			}
+		});
+	});
+	
 
 	let weatherString = $state("");
 	getWeatherString().then(str => weatherString = str);
@@ -46,27 +60,28 @@
 
 				</div>
 			</div>
-			<button aria-label="Toggle Navigation" class="md:hidden text-zinc-300 hover:text-zinc-100" onclick={toggleMobileMenu}>
+			<button id="toggle-mobile-nav" aria-label="Toggle Navigation" class="md:hidden text-zinc-300 hover:text-zinc-100">
 				{#if showMobileMenu}
 					<!-- Close Icon -->
 					<X size={24} />
 				{:else}
 					<!-- Menu Icon -->	
-					<Menu size={24} />
+					<Menu size={24} onclick={toggleMobileMenu} />
 				{/if}
 			</button>
 		</nav>
+		<!-- TODO: Improve / animate mobile menu -->
+		{#if showMobileMenu}
+			<div id="mobile-menu" class="md:hidden w-full bg-zinc-800 shadow-md rounded-lg p-4 mb-4 absolute top-20 left-0 z-10 border border-zinc-700">
+				<a href="/about" class="block py-2 text-zinc-100 {page.url.pathname.toString().split('/')[1] === 'about' ? 'font-bold' : ''}" onclick={toggleMobileMenu}>About</a>
+				<a href="/projects" class="block py-2 text-zinc-100 {page.url.pathname.toString().split('/')[1] === 'projects' ? 'font-bold' : ''}" onclick={toggleMobileMenu}>Projects</a>
+				<a href="/blog" class="block py-2 text-zinc-100 {page.url.pathname.toString().split('/')[1] === 'blog' ? 'font-bold' : ''}" onclick={toggleMobileMenu}>Blog</a>
+				<a href="/photos" class="block py-2 text-zinc-100 {page.url.pathname.toString().split('/')[1] === 'photos' ? 'font-bold' : ''}" onclick={toggleMobileMenu}>Photos</a>
+				<a href="/now" class="block py-2 text-zinc-100 {page.url.pathname.toString().split('/')[1] === 'now' ? 'font-bold' : ''}" onclick={toggleMobileMenu}>Now</a>
+			</div>
+		{/if}
 	</header>
-	<!-- TODO: Improve / animate mobile menu -->
-	{#if showMobileMenu}
-		<div class="md:hidden w-full bg-zinc-800 shadow-md rounded-lg p-4 mb-4 absolute top-20 left-0 z-10 border border-zinc-700">
-			<a href="/about" class="block py-2 text-zinc-100 {page.url.pathname.toString().split('/')[1] === 'about' ? 'font-bold' : ''}" onclick={toggleMobileMenu}>About</a>
-			<a href="/projects" class="block py-2 text-zinc-100 {page.url.pathname.toString().split('/')[1] === 'projects' ? 'font-bold' : ''}" onclick={toggleMobileMenu}>Projects</a>
-			<a href="/blog" class="block py-2 text-zinc-100 {page.url.pathname.toString().split('/')[1] === 'blog' ? 'font-bold' : ''}" onclick={toggleMobileMenu}>Blog</a>
-			<a href="/photos" class="block py-2 text-zinc-100 {page.url.pathname.toString().split('/')[1] === 'photos' ? 'font-bold' : ''}" onclick={toggleMobileMenu}>Photos</a>
-			<a href="/now" class="block py-2 text-zinc-100 {page.url.pathname.toString().split('/')[1] === 'now' ? 'font-bold' : ''}" onclick={toggleMobileMenu}>Now</a>
-		</div>
-	{/if}
+
 
 	{#key page.url}
 		<div
