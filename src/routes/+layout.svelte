@@ -74,7 +74,7 @@
 	<title>Diaza - Personal Website</title>
 </svelte:head>
 
-<div id="layout-wrapper" class="w-full min-h-screen pb-48 flex flex-col items-center bg-gray-50 px-6 sm:px-12 font-['Google_Sans'] text-gray-900">
+<div id="layout-wrapper" class="w-full min-h-screen pb-48 flex flex-col items-center bg-gray-50 px-6 sm:px-12 font-['Rubik'] text-gray-900">
 	<header class="w-full flex mt-4 mb-12">
 		<nav class="flex border-b w-full py-4 justify-between items-center">
 			<a href="/" class="text-2xl font-bold">Diaza.</a>
