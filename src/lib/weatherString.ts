@@ -18,7 +18,7 @@
 
 		const isNight = h < 6 || h >= 20;
 		const isEvening = h >= 17 && h < 20;
-		const isMorning = h >= 6 && h < 11;
+		const isMorning = h >= 6 && h < 12;
 
 		const timeLabel = isNight ? "night" : isEvening ? "evening" : isMorning ? "morning" : "afternoon";
 
