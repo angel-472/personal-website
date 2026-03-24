@@ -61,20 +61,6 @@ http://localhost:5173
 - npm run cf-typegen
   - Regenerates Cloudflare Worker environment typings
 
-## Project Structure
-
-src/
-  routes/
-    +layout.svelte
-    +page.svelte
-    about/+page.svelte
-    projects/+page.svelte
-    blog/+page.svelte
-    blog/[slug]/+page.svelte
-    api/posts/+server.ts
-  posts/
-    *.md
-
 ## Writing Blog Posts
 
 Create a new markdown file in src/posts with a kebab-case filename.

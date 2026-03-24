@@ -6,7 +6,7 @@ import { mdsvex } from 'mdsvex';
 export default defineConfig({ 
 
   plugins: [tailwindcss(), sveltekit()],
-  server: { hmr: true },
+  server: { hmr: false },
   resolve: { alias: { src: "/src" } }, 
 
 });
