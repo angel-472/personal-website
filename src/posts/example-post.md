@@ -1,5 +1,5 @@
 ---
-title: "Building a Personal Brand as a Developer in 2026"
+title: "Building a Personal Brand as a Developer in 2026 (Example Post)"
 creationDate: "2026-03-14"
 categories:
   - dev
