@@ -1,42 +1,127 @@
-# sv
+# Personal Website (Diaza)
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A personal website and blog built with SvelteKit, Tailwind CSS, and mdsvex, deployed to Cloudflare Workers.
 
-## Creating a project
+## Features
 
-If you're seeing this, you've probably already done this step. Congrats!
+- Multi-page personal site (Home, About, Projects, Blog)
+- Markdown-powered blog posts with mdsvex
+- Blog metadata (title, date, categories, cover image, excerpt, publish flag)
+- Cloudflare-ready deployment with Wrangler
+- Svelte 5 + TypeScript
 
-```sh
-# create a new project
-npx sv create my-app
-```
+## Tech Stack
 
-To recreate this project with the same configuration:
+- SvelteKit 2
+- Svelte 5
+- TypeScript
+- Tailwind CSS 4
+- mdsvex
+- Cloudflare Workers + Wrangler
 
-```sh
-# recreate this project
-npx sv@0.12.4 create --template minimal --types ts --add tailwindcss="plugins:none" mdsvex mcp="ide:vscode+setup:remote" --install npm personal-website
-```
+## Requirements
 
-## Developing
+- Node.js 20+
+- npm 10+
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Getting Started
 
-```sh
+1) Install dependencies
+
+npm install
+
+2) Start the dev server
+
 npm run dev
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+3) Open the app in your browser
 
-## Building
+http://localhost:5173
 
-To create a production version of your app:
+## Available Scripts
 
-```sh
-npm run build
-```
+- npm run dev
+  - Starts Vite dev server on host mode
 
-You can preview the production build with `npm run preview`.
+- npm run build
+  - Creates a production build
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+- npm run preview
+  - Builds and runs via Wrangler locally
+
+- npm run check
+  - Type checks and validates Svelte project
+
+- npm run check:watch
+  - Same as check, but watch mode
+
+- npm run deploy
+  - Builds and deploys to Cloudflare
+
+- npm run cf-typegen
+  - Regenerates Cloudflare Worker environment typings
+
+## Project Structure
+
+src/
+  routes/
+    +layout.svelte
+    +page.svelte
+    about/+page.svelte
+    projects/+page.svelte
+    blog/+page.svelte
+    blog/[slug]/+page.svelte
+    api/posts/+server.ts
+  posts/
+    *.md
+
+## Writing Blog Posts
+
+Create a new markdown file in src/posts with a kebab-case filename.
+
+Example:
+
+src/posts/my-new-post.md
+
+Use this frontmatter format:
+
+---
+title: "Your Post Title"
+creationDate: "2026-03-23"
+categories:
+  - webdev
+  - svelte
+published: true
+coverImageUrl: "https://..."
+excerpt: "Short summary shown in the blog list."
+---
+
+Important notes:
+
+- slug is derived from filename (my-new-post -> /blog/my-new-post)
+- published must be true for the post to appear on /blog
+- creationDate is used for sorting newest to oldest
+
+## Deployment (Cloudflare)
+
+This project is configured with:
+
+- @sveltejs/adapter-cloudflare
+- wrangler.jsonc using .svelte-kit/cloudflare worker output
+
+Deploy command:
+
+npm run deploy
+
+If you need Worker env type updates after binding changes:
+
+npm run cf-typegen
+
+## Troubleshooting
+
+- If npm run dev fails, ensure dependencies are installed and Node is up to date.
+- If deploy fails, verify Wrangler auth (wrangler login) and Cloudflare account permissions.
+
+## License
+
+Private project.
