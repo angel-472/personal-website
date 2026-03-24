@@ -46,7 +46,7 @@
 	<title>Diaza - Personal Website</title>
 </svelte:head>
 
-<div id="layout-wrapper" class="w-full min-h-screen pb-48 flex flex-col items-center bg-zinc-900 px-6 sm:px-12 font-['Rubik'] text-zinc-100">
+<div id="layout-wrapper" class="w-full min-h-screen pb-48 flex flex-col items-center bg-zinc-900 px-6 sm:px-16 md:px-32 lg:px-42 font-['Rubik'] text-zinc-100">
 	<header class="sticky top-0 w-full flex pt-4 mb-12 bg-zinc-900/98 z-20">
 		<nav class="flex border-b border-zinc-800 w-full py-4 justify-between items-center">
 			<a href="/" class="text-2xl font-bold">Diaza.</a>
