@@ -9,6 +9,8 @@ excerpt: "This is the second post. It is a test to see if the blog is working co
 coverImageUrl: "https://unsplash.com/photos/UWQP2mh5YJI/download?force=true&w=1920"
 ---
 
+(I have no idea what this video is, just testing iframes)
+<iframe width="100%" height="468" src="https://www.youtube.com/embed/5gIf0_xpFPI?si=N1WTorLKL0uwLsU_" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
 
 ## This is the second post. It is a test to see if the blog is working correctly. It should be rendered as a markdown file and should be accessible at /blog/second-post.
 
