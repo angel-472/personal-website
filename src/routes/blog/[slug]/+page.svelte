@@ -28,6 +28,9 @@
 
 <!-- Todo: Add heading that will render the post title, date, cover image, etc -->
 <section class="lg:px-24 xl:px-32 text-zinc-100">
+  <a class="inline-block mb-6" href="/blog">
+    <p class=" text-zinc-400 mb-2 hover:text-zinc-300 transition-colors duration-300">&larr; Back to Blog</p>
+  </a>
   {#if data.post.metadata.coverImageUrl}
     <img src={data.post.metadata.coverImageUrl} alt={`Cover image for ${data.post.metadata.title}`} class="w-full mb-8 object-cover object-center h-40 sm:h-80 aspect-video rounded-lg" />
   {/if}
