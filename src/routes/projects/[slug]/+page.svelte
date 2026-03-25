@@ -41,13 +41,13 @@
     {/if}
   </div>
   <!-- Post details -->
-  <div class="flex items-center gap-2 mb-6 text-zinc-400">
+  <div class="flex items-center gap-2 mb-8 text-zinc-400">
     <p>{formatDateWords(data.post.metadata.creationDate)}</p>
     <span>•</span>
     <p>{readingTime} min read</p>
   </div>
   {#if data.post.metadata.coverImageUrl}
-    <img src={data.post.metadata.coverImageUrl} alt={`Cover image for ${data.post.metadata.title}`} class="w-full mb-8 object-cover object-center aspect-video rounded-lg" />
+    <img src={data.post.metadata.coverImageUrl} alt={`Cover image for ${data.post.metadata.title}`} class="w-full mb-8 object-cover object-center aspect-video" />
   {/if}
 
 <!-- RENDERS POST CONTENT INSIDE -->
