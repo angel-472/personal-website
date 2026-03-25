@@ -16,7 +16,7 @@
 <main aria-label="Home page" class="w-full flex flex-col gap-8">
   <!-- Hero Section -->
   <section class="flex flex-col" aria-label="Hero Section">
-    <h1 class="text-5xl sm:text-6xl font-bold">Hello! I'm <span class="text-cyan-200">Angel Diaz</span>.</h1>
+    <h1 class="text-5xl sm:text-6xl font-bold">Hello! I'm <span class="text-cyan-100">Angel Diaz</span>.</h1>
     <p class="text-lg text-zinc-400 mt-4">I'm a software engineer based in Puerto Rico. Welcome to my corner of the internet!</p>
     <!-- Current Status -->
     <div class="w-full bg-zinc-800 border border-zinc-700 text-zinc-100 p-4 mt-8 flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-1 text-center rounded-lg" aria-label="Current Status">
