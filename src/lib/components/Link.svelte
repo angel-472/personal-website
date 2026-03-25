@@ -42,6 +42,6 @@
 
 
 <!-- Represents a link element with styling -->
-<a bind:this={element} href={href} class="{props.class} {isUnderlined ? 'underline decoration-dashed underline-offset-5 text-cyan-200 hover:no-underline hover:bg-cyan-200 px-1' : ''} hover:text-cyan-200 transition-colors duration-300" target="{isExternal ? '_blank' : ''}" rel="{isExternal ? 'noopener noreferrer' : ''}">
+<a bind:this={element} href={href} class="{props.class} {isUnderlined ? 'underline decoration-dashed underline-offset-5 text-cyan-200 hover:no-underline hover:bg-cyan-200 px-1 rounded' : ''} hover:text-cyan-200 transition-colors duration-300" target="{isExternal ? '_blank' : ''}" rel="{isExternal ? 'noopener noreferrer' : ''}">
   {@render children()}
 </a>

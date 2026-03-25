@@ -35,6 +35,7 @@
   <!-- Featured Projects Section -->
   <section class="flex flex-col mt-8" aria-label="Featured Projects">
     <h2 class="font-bold uppercase text-xl text-zinc-100">Featured Projects</h2>
+    <!-- TODO: Use projects api to fetch the three featured projects -->
   </section>
 
   <!-- Recent PostsSection -->

@@ -49,6 +49,8 @@
 
 <!-- Styles for blog post rendered markdown -->
 <style>
+  @reference "tailwindcss";
+
   .blog-post {
     color: #e4e4e7; /* zinc-200 */
     font-family: 'Google Sans', sans-serif;
@@ -91,17 +93,7 @@
 
   /* Links */
   .blog-post :global(a) {
-    color: inherit;
-    text-decoration: underline;
-    text-decoration-color: #71717a; /* zinc-500 */
-    text-decoration-thickness: 1px;
-    text-underline-offset: 4px;
-    transition: all 0.2s ease;
-  }
-
-  .blog-post :global(a:hover) {
-    color: #f4f4f5; /* zinc-100 */
-    text-decoration-color: #f4f4f5; /* zinc-100 */
+    @apply text-cyan-200 underline underline-offset-4 decoration-dashed transition-all duration-250 hover:text-zinc-900 hover:bg-cyan-200 hover:no-underline hover:px-1 rounded;
   }
 
   /* Lists */

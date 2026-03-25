@@ -16,7 +16,7 @@
   </section>
 
   <!-- TODO: Render project cards and project page (like blog posts but styled differently) -->
-   <section class="grid grid-cols-1 sm:grid-cols-2 gap-8 gap-y-8" aria-label="Projects List">
+   <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 gap-y-8" aria-label="Projects List">
     {#each data.projects as project}
       <article class="w-full min-h-75 transition-colors duration-200 flex flex-col items-start" aria-label={`Project: ${project.title}`}>
         <img src={project.coverImageUrl} alt={`Screenshot of ${project.title}`} class="w-full object-cover rounded-md mb-4 aspect-video" />
