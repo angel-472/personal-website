@@ -1,5 +1,6 @@
 <script lang="ts">
   import { formatRelativeTime } from '$lib/dateUtils';
+  import { ArrowRight } from 'lucide-svelte';
   
   export let data;
 
@@ -32,7 +33,7 @@
       <article class="w-full sm:h-40 flex flex-col sm:flex-row " aria-label={`Blog post: ${post.title}`}>
         <img src={post.coverImageUrl ?? 'https://placehold.co/600x400'} alt={`Cover image for ${post.title}`} class="object-cover max-h-full aspect-video rounded-md" />
         <div class="flex flex-col mt-6 sm:mt-0 sm:ml-4 flex-1 overflow-hidden min-w-0">
-          <h2 class="text-2xl font-semibold group-hover:text-zinc-300 transition-colors">{post.title}</h2>
+          <h2 class="text-2xl font-semibold group-hover:text-cyan-200 transition-colors duration-300">{post.title}</h2>
           <p class="text-zinc-400 text-sm mt-1">{formatDate(post.creationDate)}</p>
           <p class="text-zinc-300 mt-2 line-clamp-2 sm:line-clamp-3">{post.excerpt ?? "No excerpt available."}</p>
         </div>
