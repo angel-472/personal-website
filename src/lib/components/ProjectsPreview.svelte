@@ -3,15 +3,15 @@
   import { PROJECTS } from "$lib/projects";
 </script>
 
-<div class="grid grid-cols-1 gap-4" class:sm:grid-cols-2={PROJECTS.length > 1}>
+<div class="grid grid-cols-1 gap-4 {PROJECTS.length > 1 ? 'sm:grid-cols-2' : ''}">
   {#each PROJECTS as project (project.name)}
     {@const lines = project.description.split("\n").map((l) => l.trim()).filter(Boolean)}
     {@const lang = lines[0]}
     {@const tagline = lines[1] ?? ""}
-    <article class="group overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md">
+    <article class="group overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md hover:cursor-pointer">
       <div class="relative aspect-video w-full overflow-hidden bg-zinc-100">
         <img
-          class="size-full object-cover transition duration-300 group-hover:scale-[1.03]"
+          class="size-full object-cover transition duration-300"
           src={project.images[0]}
           alt="Screenshot of {project.name}"
           loading="lazy"
