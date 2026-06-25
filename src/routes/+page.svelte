@@ -2,8 +2,8 @@
   import { getTimeBasedQuote } from '$lib/quotes';
   import Link from '$lib/components/Link.svelte';
   let statusData = {
-    status: "Working on this site you're on right now! Expect new content and projects soon.",
-    lastUpdated: "2026-MAR-16"
+    status: "Planning on redesigning this website's layout!",
+    lastUpdated: "2026-APR-14"
   }
 
 </script>
