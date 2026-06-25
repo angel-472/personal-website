@@ -5,3 +5,9 @@
   touch-action: pan-x pan-y;
   height: 100%;
 }
+
+/* Smooth scroll + compensación por el header fijo */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
