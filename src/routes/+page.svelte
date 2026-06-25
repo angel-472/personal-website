@@ -2,6 +2,8 @@
   import ProjectsPreview from "$lib/components/ProjectsPreview.svelte";
   import { Github, Youtube, Linkedin, Mail, ArrowUpRight } from "lucide-svelte";
 
+  let { data } = $props();
+
   const today = new Date();
   const age = today.getFullYear() - 2004 - (today.getMonth() < 9 ? 1 : 0);
 
@@ -37,7 +39,7 @@
   {#each socials as social (social.label)}
     {@const Icon = social.icon}
     <a
-      class="group flex items-center gap-4 rounded-2xl border border-zinc-200 bg-white px-5 py-4 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-zinc-900 hover:bg-zinc-900 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100"
+      class="group flex items-center gap-4 rounded-2xl border border-zinc-200 bg-white px-5 py-4 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-zinc-900 hover:bg-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100"
       href={social.href}
       target="_blank"
       rel="noopener noreferrer"
@@ -60,7 +62,8 @@
   <h2 id="projects-heading" class="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
     Featured Projects
   </h2>
-  <ProjectsPreview />
+  <ProjectsPreview projects={data.projects} />
+  <a class="font-medium flex items-center gap-1 hover:text-zinc-600 transition duration-200" href="https://github.com/angel-472">See more on my GitHub <ArrowUpRight class="size-4 shrink-0" aria-hidden="true" /></a>
 </section>
 
 <!-- Contact -->
@@ -69,7 +72,7 @@
     Get in touch
   </h2>
   <a
-    class="group flex items-center gap-4 rounded-2xl bg-zinc-900 px-5 py-4 text-zinc-50 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:bg-zinc-800 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100"
+    class="group flex items-center gap-4 rounded-2xl bg-zinc-900 px-5 py-4 text-zinc-50 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100"
     href="mailto:hello@diaza.dev"
   >
     <Mail class="size-5 shrink-0" aria-hidden="true" />

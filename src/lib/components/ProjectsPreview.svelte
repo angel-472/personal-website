@@ -1,14 +1,20 @@
-<script>
+<script lang="ts">
   import { ArrowUpRight } from "lucide-svelte";
-  import { PROJECTS } from "$lib/projects";
+
+  let { projects: PROJECTS = [] } = $props();
+
+  let selectedProject = $state({});
+  function selectProject(project: object){
+    selectedProject = project;
+    console.log(project)
+  }
 </script>
 
 <div class="grid grid-cols-1 gap-4 {PROJECTS.length > 1 ? 'sm:grid-cols-2' : ''}">
-  {#each PROJECTS as project (project.name)}
-    {@const lines = project.description.split("\n").map((l) => l.trim()).filter(Boolean)}
-    {@const lang = lines[0]}
-    {@const tagline = lines[1] ?? ""}
-    <article class="group overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md hover:cursor-pointer">
+  {#each PROJECTS as project (project.name ?? "")}
+    {@const lang = project.lang ?? ""}
+    {@const tagline = project.description ?? ""}
+    <button class="group overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:cursor-pointer text-left" onclick={() => selectProject(project)}>
       <div class="relative aspect-video w-full overflow-hidden bg-zinc-100">
         <img
           class="size-full object-cover transition duration-300"
@@ -31,6 +37,6 @@
         </div>
         <ArrowUpRight class="mt-0.5 size-4 shrink-0 text-zinc-300 transition-colors duration-200 group-hover:text-zinc-900" aria-hidden="true" />
       </div>
-    </article>
+    </button>
   {/each}
 </div>
