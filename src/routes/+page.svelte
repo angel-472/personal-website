@@ -1,63 +1,38 @@
 <script>
-  import { getTimeBasedQuote } from '$lib/quotes';
-  import Link from '$lib/components/Link.svelte';
-  let statusData = {
-    status: "Planning on redesigning this website's layout!",
-    lastUpdated: "2026-APR-14"
-  }
-
+  const today = new Date();
+  const age = today.getFullYear() - 2004 - (today.getMonth() < 9 ? 1 : 0);
 </script>
 
-<svelte:head>
-  <title>Home - Diaza</title>
-  <meta name="description" content="Thoughts, tutorials, and musings on software development, technology, and life." />
-</svelte:head>
 
-<main aria-label="Home page" class="w-full flex flex-col gap-8">
-  <!-- Hero Section -->
-  <section class="flex flex-col" aria-label="Hero Section">
-    <h1 class="text-5xl sm:text-6xl font-bold">Hello! I'm Angel Diaz.</h1>
-    <p class="text-lg text-zinc-400 mt-4">I'm a software engineer based in Puerto Rico. Welcome to my corner of the internet!</p>
-    <!-- Current Status -->
-    <div class="w-full bg-zinc-800 border border-zinc-700 text-zinc-100 p-4 mt-8 flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-1 text-center rounded-lg" aria-label="Current Status">
-      
-      <!-- Link styling example -->
-      <Link href="/now" isUnderlined="true">
-        <h2 class="font-bold uppercase text-lg">Status Update</h2>
-      </Link>
-      
-      <!-- TODO: For longer statuses, scrolling news update style -->
-      <p class="text-zinc-300">{statusData.status}</p>
-      <span class="text-zinc-400 text-xs uppercase font-mono">Last Updated: {statusData.lastUpdated}</span>
+<section id="hero" class="mt-16">
+  <!-- Pic and text side by side -->
+  <div class="flex items-center gap-16"> 
+    <img class="w-52 h-52 rounded-full object-cover outline-3 outline-dashed p-1" src="/img/profile.jpeg" alt="Simple selfie of Angel Diaz, the portfolio owner"/>
+    <!-- Text -->
+    <div>
+      <h1 class="font-bold text-3xl">Hi, i'm Angel Diaz 👋</h1>
+      <p class="mt-4 font-bold">{age} yo Full Stack Software Engineer from Puerto Rico 🇵🇷</p>
+      <p class="max-w-md">Focused on backend systems and game development. With educational background in computer systems and networking.</p>
+
+      <!-- Quick Links -->
+      <div class="mt-8 flex gap-4">
+        <a class="px-4 py-2 border-3 border-dashed rounded-full hover:bg-zinc-200" href="https://www.linkedin.com/in/angel-diaza/" target="_blank">LinkedIn</a>
+        <a class="px-4 py-2 border-3 border-dashed rounded-full hover:bg-zinc-200" href="https://github.com/angel-472" target="_blank">GitHub</a>
+        <a class="px-4 py-2 border-3 border-dashed rounded-full hover:bg-zinc-200" href="https://www.youtube.com/@diazadev" target="_blank">YouTube</a>
+      </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Featured Projects Section -->
-  <section class="flex flex-col mt-8" aria-label="Featured Projects">
-    <h2 class="font-bold uppercase text-xl text-zinc-100">Featured Projects</h2>
-    <!-- TODO: Use projects api to fetch the three featured projects -->
-  </section>
+</section>
 
-  <!-- Recent PostsSection -->
-  <section class="flex flex-col mt-8" aria-label="Featured Projects">
-    <h2 class="font-bold uppercase text-xl text-zinc-100">Recent Posts</h2>
-  </section>
-  
-  <!-- Quote Section -->
-  <section class="flex flex-col mt-8" aria-label="Quote Section">
-    <h2 class="font-bold uppercase text-xl text-zinc-100">Inspirational Quote</h2>
-    <blockquote class="border-l-4 border-zinc-400 pl-4 italic text-zinc-300 mt-2">
-      "{getTimeBasedQuote().quote}"<br>
-      <span class="text-zinc-400 text-xs uppercase font-mono mt-2 inline-block">— {getTimeBasedQuote().author}</span>
-    </blockquote>
-    
-  </section>
+<section id="projects" class="mt-16">
+  <h2 class="font-bold text-3xl">Featured Projects</h2>
+</section>
 
-  <!-- Recent Projects Section -->
+<section id="posts" class="mt-16">
+  <h2 class="font-bold text-3xl">Posts</h2>
+</section>
 
-  <!-- Recent Posts Section -->
-
-  <!-- Guestbook Section -->
-
-  <!-- Recent Photos Section -->
-</main>
+<section id="contact" class="mt-16">
+  <h2 class="font-bold text-3xl">Contact Me</h2>
+</section>
