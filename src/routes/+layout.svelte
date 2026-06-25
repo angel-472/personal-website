@@ -3,8 +3,6 @@
   import "../app.css";
 
 	let { children } = $props();
-
-
 </script>
 
 <svelte:head>
@@ -18,20 +16,23 @@
 	<title>Angel Diaz - Full Stack Software Engineer</title>
 </svelte:head>
 
+<a
+	href="#profile"
+	class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-zinc-900 focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-zinc-50"
+>
+	Skip to content
+</a>
 
+<div class="flex min-h-screen flex-col bg-zinc-100 font-[Google_Sans] text-zinc-900">
+	<main class="flex-1 px-5 py-12 sm:py-16">
+		<div class="rise mx-auto flex w-full max-w-xl flex-col gap-10">
+			{@render children()}
+		</div>
+	</main>
 
-<main id="wrapper" class="font-[Google_Sans] px-4 sm:px-16 py-8 pb-32 bg-zinc-50 text-zinc-900 w-full h-full">
-
-	<header class="flex w-full gap-8 justify-center sm:justify-start">
-		<a href="#home">Home</a>
-		<a href="#projects">Projects</a>
-		<!-- <a href="#posts">Posts</a> -->
-		<a href="#contact">Contact</a>
-	</header>
-
-	{@render children()}
-</main>
-
-	<footer class="text-center bg-zinc-900 text-zinc-50 py-8">
-		<p>Made with ♥︎ by Angel Diaz</p>
+	<footer class="pb-10 text-center">
+		<p class="text-xs text-zinc-400">
+			Made with <span aria-hidden="true">♥︎</span><span class="sr-only">love</span> by Angel Diaz
+		</p>
 	</footer>
+</div>
