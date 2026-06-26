@@ -9,6 +9,8 @@
   let currentProject = $state();
   let projectFile = $state();
 
+  const OVERLAY_OPACITY = 40;
+
   // Listening to url changes SPA style with patch for Safari and other incompatible browsers
   onMount(() => {
     (() => {
@@ -61,13 +63,19 @@
   });
   function show() {
     console.log('showing')
-    visible = true;
-    document.body.style.overflow = 'hidden'; // Disables scrollingz
+    gsap.fromTo(overlayElement, {opacity: 0}, {opacity: OVERLAY_OPACITY * .01, duration: .2})
+    gsap.fromTo(sheetElement, {y: 800}, {y: 0, duration: .2, ease: "power2.out"}).then(() => {
+      visible = true;
+      document.body.style.overflow = 'hidden'; // Disables scrollingz
+    });
   }
   function hide(){
+    if(visible == false){
+      return;
+    }
     console.log('hiding')
-    gsap.fromTo()
-    gsap.fromTo(sheetElement, {y: 0}, {y: 1000, duration: .2, ease: "power2.out"}).then(() => {
+    gsap.fromTo(overlayElement, {opacity: OVERLAY_OPACITY * .01}, {opacity: 0, duration: .180})
+    gsap.fromTo(sheetElement, {y: 0}, {y: 800, duration: .180, ease: "power2.in"}).then(() => {
       visible = false;
       currentProject = undefined;
       projectFile = undefined;
@@ -93,10 +101,10 @@
 
 {#if visible}
   <!-- Dark overlay -->
-  <div class="fixed top-0 left-0 w-screen h-screen bg-zinc-900/40" bind:this={overlayElement}>
+  <div class="fixed top-0 left-0 w-screen h-screen bg-zinc-900" bind:this={overlayElement}>
   </div>
   <div
-    class="fixed bottom-0 left-1/2 -translate-x-1/2 h-[90vh] w-full sm:w-2xl flex flex-col overflow-hidden rounded-2xl rounded-b-none border border-zinc-200 bg-zinc-50"
+    class="fixed bottom-0 left-1/2 -translate-x-1/2 h-[90dvh] w-full sm:w-2xl flex flex-col overflow-hidden rounded-2xl rounded-b-none border border-zinc-200 bg-zinc-50"
     bind:this={sheetElement}
   >
     {#if projectFile !== undefined}
