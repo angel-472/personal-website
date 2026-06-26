@@ -63,9 +63,10 @@
   });
   function show() {
     console.log('showing')
-    gsap.fromTo(overlayElement, {opacity: 0}, {opacity: OVERLAY_OPACITY * .01, duration: .2})
-    gsap.fromTo(sheetElement, {y: 800}, {y: 0, duration: .2, ease: "power2.out"}).then(() => {
-      visible = true;
+    visible = true;
+    gsap.fromTo(overlayElement, {opacity: 0}, {opacity: OVERLAY_OPACITY * .01, duration: .180})
+    const documentHeight = document.body.scrollHeight;
+    gsap.fromTo(sheetElement, {y: documentHeight}, {y: 0, duration: .180, ease: "power2.out"}).then(() => {
       document.body.style.overflow = 'hidden'; // Disables scrollingz
     });
   }
@@ -74,8 +75,9 @@
       return;
     }
     console.log('hiding')
+    const scrollHeight = sheetElement.scrollHeight;
     gsap.fromTo(overlayElement, {opacity: OVERLAY_OPACITY * .01}, {opacity: 0, duration: .180})
-    gsap.fromTo(sheetElement, {y: 0}, {y: 800, duration: .180, ease: "power2.in"}).then(() => {
+    gsap.fromTo(sheetElement, {y: 0}, {y: scrollHeight, duration: .180, ease: "power2.in"}).then(() => {
       visible = false;
       currentProject = undefined;
       projectFile = undefined;
