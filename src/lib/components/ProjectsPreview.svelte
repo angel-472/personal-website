@@ -1,12 +1,15 @@
 <script lang="ts">
   import { ArrowUpRight } from "lucide-svelte";
+    import ProjectSheet from "./ProjectSheet.svelte";
 
   let { projects: PROJECTS = [] } = $props();
 
-  let selectedProject = $state({});
   function selectProject(project: object){
-    selectedProject = project;
     console.log(project)
+
+    const url = new URL(window.location.href);
+    url.searchParams.set('project', project.slug);
+    window.history.replaceState(null, '', url.toString());
   }
 </script>
 

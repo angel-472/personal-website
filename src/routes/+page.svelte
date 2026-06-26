@@ -1,4 +1,5 @@
 <script>
+    import ProjectSheet from "$lib/components/ProjectSheet.svelte";
   import ProjectsPreview from "$lib/components/ProjectsPreview.svelte";
   import { Github, Youtube, Linkedin, Mail, ArrowUpRight } from "lucide-svelte";
 
@@ -80,3 +81,5 @@
     <ArrowUpRight class="size-4 shrink-0 text-zinc-400 transition-colors duration-200 group-hover:text-zinc-50" aria-hidden="true" />
   </a>
 </section>
+
+<ProjectSheet />
