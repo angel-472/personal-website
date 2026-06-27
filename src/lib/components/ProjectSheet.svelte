@@ -1,3 +1,4 @@
+<!-- TODO: Add click outside sheet detection to close sheet -->
 <script>
   import { gsap } from "gsap";
     import { X } from "lucide-svelte";
@@ -9,7 +10,7 @@
   let currentProject = $state();
   let projectFile = $state();
 
-  const OVERLAY_OPACITY = 40;
+  const OVERLAY_OPACITY = 50;
 
   // Listening to url changes SPA style with patch for Safari and other incompatible browsers
   onMount(() => {
@@ -36,12 +37,15 @@
       window.addEventListener("popstate", () => {
         window.dispatchEvent(new Event("locationchange"));
       });
+
+      setTimeout(() => {
+        updateCurrentProject();
+      }, 1)
     })();
 
     // Usage: Listen to your new global event
     window.addEventListener("locationchange", () => {
-      currentProject = getCurrentProject();
-      projectFile = getProjectFile(currentProject);
+      updateCurrentProject();
     });
   });
 
@@ -54,16 +58,17 @@
   }
 
   $effect(() => {
-    if(currentProject !== undefined && currentProject !== ""){
+    if(currentProject !== undefined && currentProject !== "" && typeof currentProject == 'string'){
       show();
     } 
     else {
       hide();
     }
   });
-  function show() {
+  function show(instant = false) {
     console.log('showing')
-    visible = true;
+    console.log(currentProject)
+    visible = true; 
     gsap.fromTo(overlayElement, {opacity: 0}, {opacity: OVERLAY_OPACITY * .01, duration: .180})
     const documentHeight = document.body.scrollHeight;
     gsap.fromTo(sheetElement, {y: documentHeight}, {y: 0, duration: .180, ease: "power2.out"}).then(() => {
@@ -82,6 +87,7 @@
       currentProject = undefined;
       projectFile = undefined;
       document.body.style.overflow = ''; //Re-enables scrolling
+      clearUrlParameter();
     });
   }
 
@@ -97,13 +103,27 @@
       hide();
     }
   }
+
+  function clearUrlParameter(){
+    const url = new URL(window.location.href);
+    url.searchParams.delete('project');
+    window.history.replaceState({}, document.title, url.toString());
+  }
+
+  function updateCurrentProject(){
+    currentProject = getCurrentProject();
+    projectFile = getProjectFile(currentProject);
+  }
 </script>
 
 <svelte:window onkeydown={handleKeydown} />
 
 {#if visible}
   <!-- Dark overlay -->
-  <div class="fixed top-0 left-0 w-screen h-screen bg-zinc-900" bind:this={overlayElement}>
+
+  <!-- svelte-ignore a11y_no_static_element_interactions -->
+  <!-- svelte-ignore a11y_click_events_have_key_events -->
+  <div class="fixed top-0 left-0 w-screen h-screen bg-zinc-900" bind:this={overlayElement} onclick={hide}>
   </div>
   <div
     class="fixed bottom-0 left-1/2 -translate-x-1/2 h-[90dvh] w-full sm:w-2xl flex flex-col overflow-hidden rounded-2xl rounded-b-none border border-zinc-200 bg-zinc-50"
@@ -114,7 +134,8 @@
           <!-- Close button -->
           <button class="rounded-full absolute top-8 right-8 cursor-pointer bg-zinc-50 p-1" onclick={hide}><X size={24}/></button>
           <!-- Project Details & Images -->
-          <h1>{projectFile.metadata.name}</h1>
+          <h1 class="mt-2">{projectFile.metadata.name}</h1>
+          <!-- TODO: Add github/demo links and show tags and project start date -->
           {#if projectFile.metadata.images?.length > 0}
             {#each projectFile.metadata.images as imageSrc}
               <img src={imageSrc} alt="Screenshot of project {projectFile.metadata.name}"/>

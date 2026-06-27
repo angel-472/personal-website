@@ -1,7 +1,7 @@
 ---
 name: "diaza.dev"
 description: "My personal portfolio website built using SvelteKit and TailwindCSS."
-images: ["/img/projects/diaza-dev/screenshot.png", "/img/projects/packet-wisp/packetencoder.png"] #testing multiple images
+images: ["/img/projects/diaza-dev/screenshot.png"] #testing multiple images
 lang: "SvelteKit"
 startDate: "2023-01-01"
 tags: ["SvelteKit", "TailwindCSS", "mdsvex", "Vite", "Cloudflare Workers"]
