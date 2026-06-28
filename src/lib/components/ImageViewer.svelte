@@ -21,6 +21,9 @@
   let prevPinchDist = 0;
   let prevPinchMid = null;
   let moved = false;
+  let lastTapTime = 0;
+  let lastTapX = 0;
+  let lastTapY = 0;
 
   const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
 
@@ -154,6 +157,7 @@
   }
 
   function handlePointerUp(event) {
+    const wasSingle = pointers.size === 1;
     pointers.delete(event.pointerId);
     prevPinchDist = 0;
     prevPinchMid = null;
@@ -161,6 +165,24 @@
       const [p] = [...pointers.values()];
       lastX = p.x;
       lastY = p.y;
+      return;
+    }
+
+    // Double tap / double click toggles zoom (single pointer, no drag)
+    if (wasSingle && !moved) {
+      const now = Date.now();
+      const isDouble =
+        now - lastTapTime < 300 &&
+        Math.hypot(event.clientX - lastTapX, event.clientY - lastTapY) < 30;
+      if (isDouble) {
+        const { x, y } = centerRelative(event.clientX, event.clientY);
+        zoomAt(scale > MIN_SCALE ? MIN_SCALE : 2.5, x, y);
+        lastTapTime = 0;
+      } else {
+        lastTapTime = now;
+        lastTapX = event.clientX;
+        lastTapY = event.clientY;
+      }
     }
   }
 </script>
