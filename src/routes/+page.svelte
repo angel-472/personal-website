@@ -23,6 +23,7 @@
     alt="Portrait of Angel Diaz"
     width="112"
     height="112"
+    allow_enlarge=true
   />
   <h1 id="profile-name" class="mt-5 text-2xl font-bold tracking-tight sm:text-3xl">
     Angel Diaz

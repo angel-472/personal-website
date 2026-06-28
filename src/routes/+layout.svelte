@@ -1,5 +1,6 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
+    import ImageViewer from '$lib/components/ImageViewer.svelte';
   import "../app.css";
 
 	let { children } = $props();
@@ -36,3 +37,5 @@
 		</p>
 	</footer>
 </div>
+
+<ImageViewer />
