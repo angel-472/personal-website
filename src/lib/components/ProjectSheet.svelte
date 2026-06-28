@@ -1,7 +1,7 @@
 <!-- TODO: Add click outside sheet detection to close sheet -->
 <script>
   import { gsap } from "gsap";
-    import { X } from "lucide-svelte";
+  import { X, ArrowUpRight, Github } from "lucide-svelte";
   import { onMount } from "svelte";
 
   let sheetElement = $state();
@@ -66,8 +66,6 @@
     }
   });
   function show(instant = false) {
-    console.log('showing')
-    console.log(currentProject)
     visible = true; 
     gsap.fromTo(overlayElement, {opacity: 0}, {opacity: OVERLAY_OPACITY * .01, duration: .180})
     const documentHeight = document.body.scrollHeight;
@@ -79,7 +77,6 @@
     if(visible == false){
       return;
     }
-    console.log('hiding')
     const scrollHeight = sheetElement.scrollHeight;
     gsap.fromTo(overlayElement, {opacity: OVERLAY_OPACITY * .01}, {opacity: 0, duration: .180})
     gsap.fromTo(sheetElement, {y: 0}, {y: scrollHeight, duration: .180, ease: "power2.in"}).then(() => {
@@ -130,19 +127,30 @@
     bind:this={sheetElement}
   >
     {#if projectFile !== undefined}
-      <div id="project-content" class="project-post flex-1 overflow-y-auto px-8 pt-8 pb-16" aria-label={`Project post content for ${projectFile.metadata.name}`}>
+      <div id="project-content" class="flex-1 overflow-y-auto px-8 pt-8 pb-16" aria-label={`Project post content for ${projectFile.metadata.name}`}>
           <!-- Close button -->
           <button class="rounded-full absolute top-8 right-8 cursor-pointer bg-zinc-50 p-1" onclick={hide}><X size={24}/></button>
           <!-- Project Details & Images -->
-          <h1 class="mt-2">{projectFile.metadata.name}</h1>
-          <!-- TODO: Add github/demo links and show tags and project start date -->
+          <h1 class="mt-2 text-4xl font-bold">{projectFile.metadata.name}</h1>
+          <!-- Links (Demo / Github) -->
+          <div class="flex gap-4">
+            {#if projectFile.metadata.demo}
+              <a href={projectFile.metadata.demo} target="_blank" class="flex items-center gap-2 font-medium hover:text-zinc-600 transition-colors duration-200 mt-2"><ArrowUpRight size={16}/>Demo</a>
+            {/if}
+            {#if projectFile.metadata.github}
+              <a href={projectFile.metadata.github} target="_blank" class="flex items-center gap-2 font-medium hover:text-zinc-600 transition-colors duration-200 mt-2"><Github size={16}/>GitHub</a>
+            {/if}
+          </div>
           {#if projectFile.metadata.images?.length > 0}
             {#each projectFile.metadata.images as imageSrc}
-              <img src={imageSrc} alt="Screenshot of project {projectFile.metadata.name}"/>
+              <img allow_enlarge=true class="rounded-2xl shadow-sm my-8" src={imageSrc} alt="Screenshot of project {projectFile.metadata.name}"/>
             {/each}
           {/if}
           <!-- RENDERS PROJECT CONTENT FROM MARKDOWN -->
-          {@render projectFile.default()}
+          <div class="project-post">
+            {@render projectFile.default()}
+          </div>
+
       </div>
     {/if}
   </div>
