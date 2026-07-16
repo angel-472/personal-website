@@ -1,7 +1,13 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
-    import ImageViewer from '$lib/components/ImageViewer.svelte';
+	import ImageViewer from '$lib/components/ImageViewer.svelte';
+  import { getWeatherString } from '$lib/weatherString';
   import "../app.css";
+
+	let weatherString = $state("");
+	getWeatherString().then((value) => {
+		weatherString = value;
+	})
 
 	let { children } = $props();
 </script>
@@ -32,6 +38,9 @@
 	</main>
 
 	<footer class="pb-10 text-center">
+		<p class="text-xs text-zinc-400">
+			{weatherString}
+		</p>
 		<p class="text-xs text-zinc-400">
 			Made with <span aria-hidden="true">♥︎</span><span class="sr-only">love</span> by Angel Diaz
 		</p>
