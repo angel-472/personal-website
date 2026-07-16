@@ -20,7 +20,7 @@
       <div class="relative aspect-video w-full overflow-hidden bg-zinc-100">
         <img
           class="size-full object-cover transition duration-300"
-          src={project.images[0]}
+          src={project.images !== undefined ? project.images[0]: ''}
           alt="Screenshot of {project.name}"
           loading="lazy"
         />
