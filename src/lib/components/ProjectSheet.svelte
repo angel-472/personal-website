@@ -67,11 +67,14 @@
   });
   function show(instant = false) {
     visible = true; 
-    gsap.fromTo(overlayElement, {opacity: 0}, {opacity: OVERLAY_OPACITY * .01, duration: .180})
-    const documentHeight = document.body.scrollHeight;
-    gsap.fromTo(sheetElement, {y: documentHeight}, {y: 0, duration: .180, ease: "power2.out"}).then(() => {
-      document.body.style.overflow = 'hidden'; // Disables scrollingz
-    });
+    requestAnimationFrame(() => {
+      gsap.fromTo(overlayElement, {opacity: 0}, {opacity: OVERLAY_OPACITY * .01, duration: .180})
+      const documentHeight = document.body.scrollHeight;
+      gsap.fromTo(sheetElement, {y: documentHeight}, {y: 0, duration: .180, ease: "power2.out"}).then(() => {
+        document.body.style.overflow = 'hidden'; // Disables scrollingz
+      });
+    })
+
   }
   function hide(){
     if(visible == false){
