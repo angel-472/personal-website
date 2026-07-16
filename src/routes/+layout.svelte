@@ -37,8 +37,8 @@
 		</div>
 	</main>
 
-	<footer class="pb-10 text-center">
-		<p class="text-xs text-zinc-400">
+	<footer class="pb-10 text-center w-full flex flex-col justify-center items-center align-middle">
+		<p class="text-xs text-zinc-400 max-w-xs  mb-4">
 			{weatherString}
 		</p>
 		<p class="text-xs text-zinc-400">
