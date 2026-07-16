@@ -13,6 +13,16 @@
     { label: "YouTube", handle: "@diazadev", href: "https://www.youtube.com/@diazadev", icon: Youtube },
     { label: "LinkedIn", handle: "in/angel-diaza", href: "https://www.linkedin.com/in/angel-diaza/", icon: Linkedin },
   ];
+
+  data.projects = data.projects.sort((a, b) => {
+    if((a.priority ?? 0) < (b.priority ?? 0)){
+      return 1;
+    }
+    else {
+      return -1;
+    }
+    return 0;
+  })
 </script>
 
 <!-- Profile -->
