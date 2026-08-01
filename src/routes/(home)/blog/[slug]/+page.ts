@@ -12,6 +12,12 @@ export function load({ params }) {
     content: file.default,
     meta: { ...file.metadata, slug: params.slug },
     title: `${file.metadata.title} - Angel Diaz`,
-    description: file.metadata.excerpt
+    description: file.metadata.excerpt,
+    // Feeds the link preview in +layout.svelte. Posts without a cover image fall
+    // back to the site card there, so leaving `image` undefined is fine.
+    ogType: 'article',
+    image: file.metadata.coverImageUrl,
+    imageAlt: file.metadata.coverImageUrl ? `Cover image for ${file.metadata.title}` : undefined,
+    publishedTime: file.metadata.creationDate
   };
 }

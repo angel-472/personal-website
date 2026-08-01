@@ -3,6 +3,27 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<!-- Icons. Every file here is generated from src/lib/assets/favicon.svg by
+		     scripts/generate-icons.mjs -- run `npm run icons` after changing the logo.
+		     Browsers prefer the SVG; the .ico covers the bare /favicon.ico request
+		     that some crawlers and feed readers make without reading the markup. -->
+		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+
+		<!-- iOS home screen. iOS ignores the manifest icons and masks this one itself,
+		     so apple-touch-icon.png is square and opaque rather than pre-rounded. -->
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<meta name="apple-mobile-web-app-title" content="Diaza" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+		<!-- PWA install -->
+		<link rel="manifest" href="/site.webmanifest" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="theme-color" content="#f4f4f5" />
+
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

@@ -88,6 +88,40 @@ Important notes:
 - published must be true for the post to appear on /blog
 - creationDate is used for sorting newest to oldest
 
+## Icons and Link Previews
+
+All icons are generated from a single source file, src/lib/assets/favicon.svg.
+
+After changing the logo, regenerate them:
+
+npm run icons
+
+That writes the following to static/ (all committed):
+
+- favicon.svg, favicon.ico, favicon-96x96.png - browser tabs. These use a compact
+  "D." mark, because the full wordmark turns into a smear at 16px.
+- apple-touch-icon.png - iOS home screen. Square and opaque; iOS applies its own
+  rounded mask, so a pre-rounded icon would end up double-rounded.
+- web-app-manifest-{192,512}.png - PWA install icons.
+- web-app-manifest-maskable-{192,512}.png - Android adaptive icons.
+- og-image.png - the 1200x630 card used for link previews.
+
+The icon and manifest tags live in src/app.html. Per-page Open Graph and Twitter
+tags live in src/routes/+layout.svelte and read from src/lib/site.ts.
+
+Any page can override its preview by returning these from its load function:
+
+- title, description
+- image, imageAlt - absolute or site-relative; falls back to og-image.png
+- ogType - "article" for blog posts, otherwise "website"
+- publishedTime - ISO date, emitted as article:published_time
+
+Blog posts wire this up automatically from their frontmatter, using coverImageUrl
+as the preview image.
+
+Note: SITE_URL in src/lib/site.ts is hardcoded to the production origin, since
+link previews need absolute URLs and the request host can be a preview deployment.
+
 ## Deployment (Cloudflare)
 
 This project is configured with:
