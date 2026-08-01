@@ -1,12 +1,10 @@
-<script>
-    import ProjectSheet from "$lib/components/ProjectSheet.svelte";
-  import ProjectsPreview from "$lib/components/ProjectsPreview.svelte";
+<script lang="ts">
+  import { page } from "$app/state";
+  import { fade } from "svelte/transition";
+  import ProjectSheet from "$lib/components/ProjectSheet.svelte";
   import { Github, Youtube, Linkedin, Mail, ArrowUpRight } from "lucide-svelte";
 
-  let { data } = $props();
-
-  const today = new Date();
-  const age = today.getFullYear() - 2004 - (today.getMonth() < 9 ? 1 : 0);
+  let { children } = $props();
 
   const socials = [
     { label: "GitHub", handle: "@angel-472", href: "https://github.com/angel-472", icon: Github },
@@ -14,15 +12,12 @@
     { label: "LinkedIn", handle: "in/angel-diaza", href: "https://www.linkedin.com/in/angel-diaza/", icon: Linkedin },
   ];
 
-  data.projects = data.projects.sort((a, b) => {
-    if((a.priority ?? 0) < (b.priority ?? 0)){
-      return 1;
-    }
-    else {
-      return -1;
-    }
-    return 0;
-  })
+  const tabs = [
+    { label: "Projects", href: "/" },
+    { label: "Posts", href: "/blog" },
+  ];
+
+  const currentTab = $derived(page.url.pathname.startsWith("/blog") ? "/blog" : "/");
 </script>
 
 <!-- Profile -->
@@ -69,14 +64,39 @@
   {/each}
 </nav>
 
-<!-- Projects -->
-<section id="projects" aria-labelledby="projects-heading" class="flex flex-col gap-4">
-  <h2 id="projects-heading" class="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
-    Featured Projects
-  </h2>
-  <ProjectsPreview projects={data.projects} />
-  <a class="font-medium flex items-center gap-1 hover:text-zinc-600 transition duration-200" href="https://github.com/angel-472">See more on my GitHub <ArrowUpRight class="size-4 shrink-0" aria-hidden="true" /></a>
-</section>
+<!-- Projects / Posts -->
+<div class="flex flex-col gap-6">
+  <!-- Switcher -->
+  <nav aria-label="Featured work" class="grid grid-cols-2 gap-1 rounded-2xl bg-zinc-200/70 p-1">
+    {#each tabs as tab (tab.href)}
+      {@const isActive = currentTab === tab.href}
+      <a
+        class="rounded-xl border px-4 py-2.5 text-center text-sm font-bold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100 {isActive
+          ? 'border-zinc-200 bg-white text-zinc-900 shadow-sm'
+          : 'border-transparent text-zinc-400 hover:text-zinc-600'}"
+        href={tab.href}
+        aria-current={isActive ? "page" : undefined}
+        data-sveltekit-noscroll
+      >
+        {tab.label}
+      </a>
+    {/each}
+  </nav>
+
+  <!-- Only this part swaps between the two tabs; both share the same grid cell
+       so the crossfade doesn't push the page around. -->
+  <div class="grid">
+    {#key currentTab}
+      <div
+        class="col-start-1 row-start-1"
+        in:fade={{ duration: 200, delay: 130 }}
+        out:fade={{ duration: 130 }}
+      >
+        {@render children()}
+      </div>
+    {/key}
+  </div>
+</div>
 
 <!-- Contact -->
 <section id="contact" aria-labelledby="contact-heading" class="flex flex-col gap-4">

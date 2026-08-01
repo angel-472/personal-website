@@ -1,6 +1,7 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
 	import ImageViewer from '$lib/components/ImageViewer.svelte';
+  import { page } from '$app/state';
   import { getWeatherString } from '$lib/weatherString';
   import "../app.css";
 
@@ -10,6 +11,10 @@
 	})
 
 	let { children } = $props();
+
+	// Pages can override these by returning `title` / `description` from their load
+	const title = $derived(page.data.title ?? 'Angel Diaz - Full Stack Software Engineer');
+	const description = $derived(page.data.description ?? 'Angel Diaz, full stack software engineer from Puerto Rico. Projects, writing and contact.');
 </script>
 
 <svelte:head>
@@ -21,7 +26,8 @@
 
 	<!-- Website Data and SEO -->
 	<link rel="icon" href={favicon} />
-	<title>Angel Diaz - Full Stack Software Engineer</title>
+	<title>{title}</title>
+	<meta name="description" content={description} />
 </svelte:head>
 
 <a
