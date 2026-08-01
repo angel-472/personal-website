@@ -29,6 +29,9 @@
 	const canonical = $derived(absoluteUrl(page.url.pathname));
 	const ogType = $derived(page.data.ogType ?? 'website');
 
+	// Tool pages (the content editor) ask for a wider column than the site's reading width.
+	const isWide = $derived(page.data.layout === 'wide');
+
 	// Posts fall back to the site card when they have no cover image of their own.
 	const hasCustomImage = $derived(Boolean(page.data.image));
 	const ogImage = $derived(absoluteUrl(page.data.image ?? DEFAULT_OG_IMAGE));
@@ -87,7 +90,7 @@
 
 <div class="flex min-h-screen flex-col bg-zinc-100 font-[Google_Sans] text-zinc-900">
 	<main class="flex-1 px-5 py-12 sm:py-16">
-		<div class="rise mx-auto flex w-full max-w-xl flex-col gap-10">
+		<div class="rise mx-auto flex w-full flex-col gap-10 {isWide ? 'max-w-5xl' : 'max-w-xl'}">
 			{@render children()}
 		</div>
 	</main>
