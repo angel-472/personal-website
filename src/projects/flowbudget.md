@@ -1,8 +1,8 @@
 ---
 name: "FlowBudget"
 description: "Personal weekly budgeting app to track expenses, recurring bills and savings goals."
-images: ["/img/projects/flowbudget/01.png"]
 lang: "Svelte"
+images: ["/img/projects/flowbudget/01.png"]
 tags: ["Svelte", "TailwindCSS", "Vite", "Cloudflare Workers", "Supabase"]
 github: "https://github.com/angel-472/flowbudget"
 demo: "https://flowbudget.pages.dev/"
@@ -15,4 +15,8 @@ I have made the demo public, so if anyone feels this app suits their needs, they
 
 I started this project in October 2025 with the help of AI tools to quickly build a prototype. However, since then, I have been rewriting it to ensure the codebase is clean, maintainable, and scalable.
 
-Planned features coming soon in the summer of 2026 include savings goals, which are currently a work in progress, and support for tracking recurring expenses with customizable frequencies.
+## Update Aug 1, 2026:
+
+- Added savings goals section which allows me to keep track of my savings goals and where i'm currently at with them, it's a very helpful feature for keeping my finances organized.
+- Major improvements to the visual design and UX.
+- Planned features: Recurring Expenses that are visible in transactions view and taken into account in budget calculations.

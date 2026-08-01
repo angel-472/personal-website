@@ -1,11 +1,10 @@
 ---
 title: "Why I'm Rewriting My Terraria Inspired Game"
 creationDate: "2026-03-25"
-categories:
-  - gamedev
-published: true
-coverImageUrl: "/img/blog/001.png"
 excerpt: "A Terraria-inspired sandbox game I built years ago while learning web development, now being rewritten from scratch with the tools and practices I've picked up since."
+coverImageUrl: "/img/blog/001.png"
+categories: ["gamedev"]
+published: true
 ---
 
 Let me start by giving some context about this project. I started this project some time ago when I was learning web development through [The Odin Project](https://www.theodinproject.com/). I found a YouTube video that taught how to make a simple 2D game using HTML5 Canvas and JavaScript, and I decided to follow along and build something inspired by Terraria.
@@ -28,9 +27,7 @@ So I decided to rewrite the entire codebase from scratch using the tools I know 
 
 This new iteration of the game will be rebuilt around an [Entity Component System (ECS)](https://en.wikipedia.org/wiki/Entity_component_system) architecture to create a more decoupled, modular, and scalable codebase. The goal is to move away from tightly connected game logic and toward a system that is easier to maintain, extend, and reuse as the project grows.
 
-*(plus the code will look cooler)*
-
-I also plan to make heavier use of my [Observer Pattern](https://en.wikipedia.org/wiki/Observer_pattern) implementation (`signal.js`) to manage communication between components and systems through events rather than direct dependencies. This should help keep the architecture clean while making gameplay systems more flexible and easier to evolve over time.
+I also plan to make heavier use of my [Observer Pattern](https://en.wikipedia.org/wiki/Observer_pattern) implementation `signal.js` to manage communication between components and systems through events rather than direct dependencies. This should help keep the architecture clean while making gameplay systems more flexible and easier to evolve over time.
 
 These decisions are aimed at improving the long-term maintainability of the project and building a stronger technical foundation for future features.
 
