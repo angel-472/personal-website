@@ -28,7 +28,7 @@
   let doc = $state<EditorDoc | null>(null);
   let slugTouched = $state(false);
   let draft = $state<EditorDoc | null>(null);
-  let copied = $state(false);
+  let copyState = $state<'idle' | 'copied' | 'failed'>('idle');
   let exported = $state('');
   /** Incremented whenever a different file is opened, to remount the editor. */
   let session = $state(0);
@@ -135,13 +135,59 @@
 
   async function copyMarkdown() {
     if (!doc) return;
-    try {
-      await navigator.clipboard.writeText(output);
-      copied = true;
-      setTimeout(() => (copied = false), 2000);
-    } catch {
-      copied = false;
+    copyState = (await writeToClipboard(output)) ? 'copied' : 'failed';
+    setTimeout(() => (copyState = 'idle'), 2000);
+  }
+
+  async function writeToClipboard(text: string): Promise<boolean> {
+    // navigator.clipboard only exists in secure contexts, so it's missing when
+    // the dev server is opened over the LAN (http://10.x.x.x) from a phone.
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch {
+        // Denied or unavailable — fall through to the selection-based copy
+      }
     }
+    return legacyCopy(text);
+  }
+
+  function legacyCopy(text: string): boolean {
+    const area = document.createElement('textarea');
+    area.value = text;
+    area.setAttribute('readonly', '');
+    area.style.cssText = 'position:fixed;top:0;left:0;opacity:0;pointer-events:none;';
+    document.body.appendChild(area);
+
+    const selection = document.getSelection();
+    const previous = selection && selection.rangeCount ? selection.getRangeAt(0) : null;
+
+    // iOS ignores select() on a readonly textarea, so select a range instead
+    if (/iP(ad|hone|od)/.test(navigator.userAgent)) {
+      area.contentEditable = 'true';
+      const range = document.createRange();
+      range.selectNodeContents(area);
+      selection?.removeAllRanges();
+      selection?.addRange(range);
+    } else {
+      area.select();
+    }
+    area.setSelectionRange(0, text.length);
+
+    let ok = false;
+    try {
+      ok = document.execCommand('copy');
+    } catch {
+      ok = false;
+    }
+
+    area.remove();
+    if (previous && selection) {
+      selection.removeAllRanges();
+      selection.addRange(previous);
+    }
+    return ok;
   }
 
   function onkeydown(event: KeyboardEvent) {
@@ -290,18 +336,24 @@
 
       <button
         type="button"
-        class="shrink-0 rounded-xl border border-zinc-200 p-2 text-zinc-500 transition duration-200 hover:border-zinc-900 hover:text-zinc-900 sm:px-3"
+        class="shrink-0 rounded-xl border p-2 transition duration-200 sm:px-3 {copyState === 'failed'
+          ? 'border-red-300 text-red-500'
+          : 'border-zinc-200 text-zinc-500 hover:border-zinc-900 hover:text-zinc-900'}"
         onclick={copyMarkdown}
         aria-label="Copy markdown"
-        title="Copy markdown"
+        title={copyState === 'failed' ? 'Copying was blocked — use Export instead' : 'Copy markdown'}
       >
         <span class="flex items-center gap-1.5">
-          {#if copied}
+          {#if copyState === 'copied'}
             <Check class="size-4" aria-hidden="true" />
+          {:else if copyState === 'failed'}
+            <X class="size-4" aria-hidden="true" />
           {:else}
             <Copy class="size-4" aria-hidden="true" />
           {/if}
-          <span class="hidden text-xs font-bold sm:inline">{copied ? 'Copied' : 'Copy'}</span>
+          <span class="hidden text-xs font-bold sm:inline">
+            {copyState === 'copied' ? 'Copied' : copyState === 'failed' ? 'Blocked' : 'Copy'}
+          </span>
         </span>
       </button>
 
