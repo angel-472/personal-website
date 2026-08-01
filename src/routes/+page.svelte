@@ -35,14 +35,14 @@
     height="112"
     allow_enlarge=true
   />
-  <h1 id="profile-name" class="mt-5 text-2xl font-bold tracking-tight sm:text-3xl">
+  <h1 id="profile-name" class="mt-5 text-2xl font-bold sm:text-3xl">
     Angel Diaz
   </h1>
   <p class="mt-1.5 text-sm font-bold text-zinc-700">
-    {age} y/o Full Stack Software Engineer - Puerto Rico <span aria-hidden="true">🇵🇷</span>
+    Full Stack Software Engineer<br>From Puerto Rico <span aria-hidden="true">🇵🇷</span>
   </p>
   <p class="mt-3 max-w-xs text-sm leading-relaxed text-zinc-500">
-    Focused on backend systems and game development, with a background in computer systems and networking.
+    I build web apps end to end, from the UI down to the servers they run on.
   </p>
 </section>
 

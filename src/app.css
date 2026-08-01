@@ -11,3 +11,7 @@ html {
   scroll-padding-top: 2rem;
   background-color: #f4f4f5; /* zinc-100, avoids white flash before paint */
 }
+
+h1 {
+  font-family: 'Montserrat';
+}
