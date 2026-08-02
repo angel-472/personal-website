@@ -96,7 +96,7 @@
 	</main>
 
 	<footer class="pb-10 text-center w-full flex flex-col justify-center items-center align-middle">
-		<p class="text-xs text-zinc-400 max-w-xs sm:max-w-none mb-4">
+		<p class="text-xs text-zinc-400 max-w-xs sm:max-w-none mb-2">
 			{weatherString}
 		</p>
 		<p class="text-xs text-zinc-400">

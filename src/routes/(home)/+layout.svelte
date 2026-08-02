@@ -2,7 +2,7 @@
   import { page } from "$app/state";
   import { fade } from "svelte/transition";
   import ProjectSheet from "$lib/components/ProjectSheet.svelte";
-  import { Github, Youtube, Linkedin, Mail, ArrowUpRight } from "lucide-svelte";
+  import { Github, Youtube, Linkedin, Mail } from "lucide-svelte";
 
   let { children } = $props();
 
@@ -41,28 +41,39 @@
   </p>
 </section>
 
-<!-- Social links -->
-<nav aria-label="Social profiles" class="flex flex-col gap-3">
-  {#each socials as social (social.label)}
-    {@const Icon = social.icon}
-    <a
-      class="group flex items-center gap-4 rounded-2xl border border-zinc-200 bg-white px-5 py-4 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-zinc-900 hover:bg-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100"
-      href={social.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="{social.label} (opens in a new tab)"
-    >
-      <Icon class="size-5 shrink-0 text-zinc-900 transition-colors duration-200 group-hover:text-zinc-50" aria-hidden="true" />
-      <span class="flex-1 text-left text-sm font-bold text-zinc-900 transition-colors duration-200 group-hover:text-zinc-50">
-        {social.label}
-      </span>
-      <span class="hidden text-xs text-zinc-400 transition-colors duration-200 group-hover:text-zinc-500 sm:inline">
-        {social.handle}
-      </span>
-      <ArrowUpRight class="size-4 shrink-0 text-zinc-300 transition-colors duration-200 group-hover:text-zinc-50" aria-hidden="true" />
-    </a>
-  {/each}
-</nav>
+<!-- Availability + socials. These sit in one container so they read as a single
+     block under the profile, rather than picking up the page's wider gap. -->
+<div class="flex flex-col gap-2">
+  <!-- Availability. The status is plain text so the only emphasis on the page
+       lands on the one thing worth clicking. -->
+  <p class="pb-1 text-center text-sm text-zinc-500">Currently open to work.</p>
+  <a
+    class="flex items-center justify-center gap-3 rounded-2xl bg-zinc-900 px-5 py-4 text-zinc-50 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100"
+    href="mailto:hello@diaza.dev"
+  >
+    <Mail class="size-5 shrink-0" aria-hidden="true" />
+    <span class="text-sm font-bold">hello@diaza.dev</span>
+  </a>
+
+  <!-- Social links -->
+  <nav aria-label="Social profiles" class="grid grid-cols-3 gap-2">
+    {#each socials as social (social.label)}
+      {@const Icon = social.icon}
+      <a
+        class="group flex items-center justify-center gap-2 rounded-xl border border-zinc-200 bg-white px-3 py-3.5 transition duration-200 hover:border-zinc-900 hover:bg-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100"
+        href={social.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="{social.label} — {social.handle} (opens in a new tab)"
+      >
+        <Icon class="size-4 shrink-0 text-zinc-900 transition-colors duration-200 group-hover:text-zinc-50" aria-hidden="true" />
+        <span class="text-xs font-bold text-zinc-500 transition-colors duration-200 group-hover:text-zinc-50">
+          {social.label}
+        </span>
+      </a>
+    {/each}
+  </nav>
+</div>
 
 <!-- Projects / Posts -->
 <div class="flex flex-col gap-6">
@@ -97,20 +108,5 @@
     {/key}
   </div>
 </div>
-
-<!-- Contact -->
-<section id="contact" aria-labelledby="contact-heading" class="flex flex-col gap-4">
-  <h2 id="contact-heading" class="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
-    Get in touch
-  </h2>
-  <a
-    class="group flex items-center gap-4 rounded-2xl bg-zinc-900 px-5 py-4 text-zinc-50 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100"
-    href="mailto:hello@diaza.dev"
-  >
-    <Mail class="size-5 shrink-0" aria-hidden="true" />
-    <span class="flex-1 text-left text-sm font-bold">hello@diaza.dev</span>
-    <ArrowUpRight class="size-4 shrink-0 text-zinc-400 transition-colors duration-200 group-hover:text-zinc-50" aria-hidden="true" />
-  </a>
-</section>
 
 <ProjectSheet />
