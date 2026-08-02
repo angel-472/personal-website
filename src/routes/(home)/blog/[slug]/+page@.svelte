@@ -20,10 +20,14 @@
 
   <!-- Post header -->
   <header class="flex flex-col">
-    <p class="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
-      {#if meta.creationDate}{formatDateWords(meta.creationDate)}{/if}
-      {#if meta.creationDate && meta.categories?.length}<span aria-hidden="true"> · </span>{/if}
-      {#if meta.categories?.length}{meta.categories.join(", ")}{/if}
+    <!-- Wraps as whole items, so the separator never starts a line -->
+    <p class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
+      {#if meta.creationDate}
+        <span class="inline-flex items-center gap-x-2">
+          {formatDateWords(meta.creationDate)}<span aria-hidden="true">·</span>
+        </span>
+      {/if}
+      <span>{meta.readTime} min read</span>
     </p>
     <h1 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
       {meta.title}
