@@ -3,25 +3,25 @@
 <script lang="ts">
   import { ArrowUpRight, Github } from 'lucide-svelte';
   import { formatDateWords } from '$lib/dateUtils';
+  import { readTime } from '$lib/readTime';
   import type { Meta } from './frontmatter';
   import type { DocKindId } from './schema';
 
-  let { kind, meta }: { kind: DocKindId; meta: Meta } = $props();
+  let { kind, meta, body = '' }: { kind: DocKindId; meta: Meta; body?: string } = $props();
 
-  const categories = $derived(Array.isArray(meta.categories) ? (meta.categories as string[]) : []);
+  const minutes = $derived(readTime(body));
   const images = $derived(Array.isArray(meta.images) ? (meta.images as string[]).filter(Boolean) : []);
   const date = $derived(meta.creationDate ? formatDateWords(String(meta.creationDate)) : '');
 </script>
 
 {#if kind === 'post'}
   <header class="flex flex-col">
-    {#if date || categories.length}
-      <p class="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
-        {date}
-        {#if date && categories.length}<span aria-hidden="true"> · </span>{/if}
-        {categories.join(', ')}
-      </p>
-    {/if}
+    <p class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
+      {#if date}
+        <span class="inline-flex items-center gap-x-2">{date}<span aria-hidden="true">·</span></span>
+      {/if}
+      <span>{minutes} min read</span>
+    </p>
     <h1 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
       {String(meta.title ?? '').trim() || 'Untitled post'}
     </h1>

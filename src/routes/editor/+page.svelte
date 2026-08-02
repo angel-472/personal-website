@@ -391,7 +391,7 @@
         <RichTextEditor bind:value={doc.body}>
           {#snippet header()}
             <!-- Inside a snippet TS loses the `doc` narrowing from the branch above -->
-            <DocHeader kind={doc!.kind} meta={doc!.meta} />
+            <DocHeader kind={doc!.kind} meta={doc!.meta} body={doc!.body} />
           {/snippet}
         </RichTextEditor>
       {/key}
