@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ProjectsPreview from "$lib/components/ProjectsPreview.svelte";
+  import ProjectsGrid from "$lib/components/ProjectsGrid.svelte";
   import { ArrowUpRight } from "lucide-svelte";
 
   let { data } = $props();
@@ -8,6 +8,6 @@
 <!-- Projects -->
 <section id="projects" aria-labelledby="projects-heading" class="flex flex-col gap-4">
   <h2 id="projects-heading" class="sr-only">Featured Projects</h2>
-  <ProjectsPreview projects={data.projects} />
+  <ProjectsGrid projects={data.projects} />
   <a class="font-medium flex items-center gap-1 hover:text-zinc-600 transition duration-200" href="https://github.com/angel-472">See more on my GitHub <ArrowUpRight class="size-4 shrink-0" aria-hidden="true" /></a>
 </section>

@@ -7,6 +7,7 @@
   // The newest post gets the big card; everything else stacks under "Earlier".
   const featured = $derived(data.posts[0]);
   const earlier = $derived(data.posts.slice(1));
+
 </script>
 
 <!-- Posts -->
