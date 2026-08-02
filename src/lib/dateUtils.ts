@@ -36,6 +36,18 @@ export function formatRelativeTime(date: string): string {
   return `${month} ${day}`;
 }
 
+/** "Jul 31", or "Jul 31, 2025" once the year differs from the current one. */
+export function formatDateShort(date: string): string {
+  const noteDate = new Date(date + 'T00:00-0800'); // Parse as local time
+  const month = noteDate.toLocaleDateString('en-US', { month: 'short' });
+  const day = noteDate.getDate();
+
+  if (noteDate.getFullYear() !== new Date().getFullYear()) {
+    return `${month} ${day}, ${noteDate.getFullYear()}`;
+  }
+  return `${month} ${day}`;
+}
+
 export function formatDateWords(date){
   date = new Date(date + 'T00:00-0800'); // Parse as local time
   const formatted = date.toLocaleDateString("en-US", {

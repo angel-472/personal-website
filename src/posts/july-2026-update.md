@@ -3,6 +3,7 @@ title: "July Update: What i've been up to"
 creationDate: "2026-08-01"
 excerpt: "In this post i go over what i've been up to in the month of July, plus some thoughts on discipline, goals, and what i'm working toward next."
 published: true
+categories: ["vacation", "projects", "personal"]
 coverImageUrl: "/img/blog/july-2026-update.jpg"
 ---
 - I took a short vacation to Culebra, Puerto Rico. It was a nice break from work that helped me recharge and clear my mind.
