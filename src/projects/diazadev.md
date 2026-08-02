@@ -1,9 +1,9 @@
 ---
 name: "Personal Portfolio"
 description: "My personal portfolio website built using SvelteKit and TailwindCSS."
-images: ["/img/projects/diaza-dev/screenshot.png"] #testing multiple images
 lang: "SvelteKit"
 startDate: "2023-01-01"
+images: ["/og-image.png"]
 tags: ["SvelteKit", "TailwindCSS", "mdsvex", "Vite", "Cloudflare Workers"]
 github: "https://github.com/angel-472/personal-website"
 demo: "https://diaza.dev"
