@@ -37,7 +37,7 @@
 
   {#if meta.coverImageUrl}
     <img
-      class="rounded-2xl shadow-sm"
+      class="rounded-2xl shadow-sm aspect-video object-cover"
       src={meta.coverImageUrl}
       alt="Cover image for {meta.title}"
       allow_enlarge=true
