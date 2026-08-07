@@ -7,6 +7,10 @@
 		const res = await fetch(url);
 		const data = await res.json();
 
+		if(data == undefined){
+			return ':)';
+		}
+
 		const temp = Math.round(data.current.temperature_2m);
 		const code = data.current.weathercode;
 		const hour = new Date().toLocaleString("en-US", {
