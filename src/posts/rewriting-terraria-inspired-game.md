@@ -2,7 +2,7 @@
 title: "Why I'm Rewriting My Terraria Inspired Game"
 creationDate: "2026-03-25"
 excerpt: "A Terraria-inspired sandbox game I built years ago while learning web development, now being rewritten from scratch with the tools and practices I've picked up since."
-coverImageUrl: "/img/blog/001.png"
+coverImageUrl: "/img/blog/rewriting-terraria-inspired-game.png"
 categories: ["gamedev"]
 published: true
 ---
