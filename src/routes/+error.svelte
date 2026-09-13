@@ -6,13 +6,13 @@
 </script>
 
 <section class="flex flex-col items-center text-center">
-  <p class="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
+  <p class="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500">
     Error {page.status}
   </p>
   <h1 class="mt-3 text-5xl font-bold tracking-tight sm:text-6xl">
     {is404 ? 'Page not found' : 'Something went wrong'}
   </h1>
-  <p class="mt-4 max-w-xs text-sm leading-relaxed text-zinc-500">
+  <p class="mt-4 max-w-xs text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
     {#if is404}
       The page you're looking for doesn't exist or may have been moved.
     {:else}
@@ -22,7 +22,7 @@
 </section>
 
 <a
-  class="group flex items-center gap-4 rounded-2xl bg-zinc-900 px-5 py-4 text-zinc-50 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100"
+  class="group flex items-center gap-4 rounded-2xl bg-zinc-900 px-5 py-4 text-zinc-50 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white dark:focus-visible:ring-zinc-100 dark:focus-visible:ring-offset-zinc-950"
   href="/"
 >
   <ArrowLeft class="size-5 shrink-0 transition-transform duration-200 group-hover:-translate-x-0.5" aria-hidden="true" />

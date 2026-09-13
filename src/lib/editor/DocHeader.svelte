@@ -16,7 +16,7 @@
 
 {#if kind === 'post'}
   <header class="flex flex-col">
-    <p class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
+    <p class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-bold uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500">
       {#if date}
         <span class="inline-flex items-center gap-x-2">{date}<span aria-hidden="true">·</span></span>
       {/if}
@@ -26,7 +26,7 @@
       {String(meta.title ?? '').trim() || 'Untitled post'}
     </h1>
     {#if meta.excerpt}
-      <p class="mt-4 text-sm leading-relaxed text-zinc-500">{meta.excerpt}</p>
+      <p class="mt-4 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">{meta.excerpt}</p>
     {/if}
   </header>
   {#if meta.coverImageUrl}

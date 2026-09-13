@@ -163,12 +163,12 @@
   ]);
 
   const fieldClass =
-    'min-w-0 flex-1 rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-1.5 text-sm transition placeholder:text-zinc-300 focus:border-zinc-400 focus:bg-white focus:outline-none';
+    'min-w-0 flex-1 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800 px-3 py-1.5 text-sm transition placeholder:text-zinc-300 dark:placeholder:text-zinc-600 focus:border-zinc-400 dark:focus:border-zinc-600 focus:bg-white dark:focus:bg-zinc-700 focus:outline-none';
 </script>
 
-<section class="flex min-w-0 flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm">
+<section class="flex min-w-0 flex-col overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm">
   <!-- Toolbar -->
-  <div class="flex flex-col gap-2 border-b border-zinc-200 px-2 py-2">
+  <div class="flex flex-col gap-2 border-b border-zinc-200 dark:border-zinc-800 px-2 py-2">
     <div class="flex items-center gap-2">
       <div class="flex min-w-0 flex-1 items-center gap-0.5 overflow-x-auto">
         {#each tools as tool (tool.label)}
@@ -176,8 +176,8 @@
           <button
             type="button"
             class="shrink-0 rounded-lg p-2 transition duration-200 {tool.active
-              ? 'bg-zinc-900 text-zinc-50'
-              : 'text-zinc-400 hover:bg-zinc-100 hover:text-zinc-900'}"
+              ? 'bg-zinc-900 dark:bg-zinc-100 text-zinc-50 dark:text-zinc-900'
+              : 'text-zinc-400 dark:text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100'}"
             onclick={tool.run}
             title={tool.label}
             aria-label={tool.label}
@@ -188,10 +188,10 @@
         {/each}
       </div>
 
-      <div class="flex shrink-0 items-center gap-0.5 border-l border-zinc-200 pl-1.5">
+      <div class="flex shrink-0 items-center gap-0.5 border-l border-zinc-200 dark:border-zinc-800 pl-1.5">
         <button
           type="button"
-          class="rounded-lg p-2 text-zinc-400 transition duration-200 hover:bg-zinc-100 hover:text-zinc-900 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-zinc-400"
+          class="rounded-lg p-2 text-zinc-400 dark:text-zinc-500 transition duration-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-zinc-400 dark:disabled:hover:text-zinc-500"
           onclick={() => chain()?.undo().run()}
           disabled={!canUndo}
           title="Undo"
@@ -201,7 +201,7 @@
         </button>
         <button
           type="button"
-          class="rounded-lg p-2 text-zinc-400 transition duration-200 hover:bg-zinc-100 hover:text-zinc-900 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-zinc-400"
+          class="rounded-lg p-2 text-zinc-400 dark:text-zinc-500 transition duration-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-zinc-400 dark:disabled:hover:text-zinc-500"
           onclick={() => chain()?.redo().run()}
           disabled={!canRedo}
           title="Redo"
@@ -231,10 +231,10 @@
           }}
           aria-label="Link URL"
         />
-        <button type="button" class="rounded-lg bg-zinc-900 p-2 text-zinc-50 transition hover:bg-zinc-800" onclick={applyLink} aria-label="Apply link">
+        <button type="button" class="rounded-lg bg-zinc-900 dark:bg-zinc-100 p-2 text-zinc-50 dark:text-zinc-900 transition hover:bg-zinc-800 dark:hover:bg-zinc-200" onclick={applyLink} aria-label="Apply link">
           <Check class="size-4" aria-hidden="true" />
         </button>
-        <button type="button" class="rounded-lg p-2 text-zinc-400 transition hover:bg-zinc-100 hover:text-zinc-900" onclick={() => (linkOpen = false)} aria-label="Cancel">
+        <button type="button" class="rounded-lg p-2 text-zinc-400 dark:text-zinc-500 transition hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100" onclick={() => (linkOpen = false)} aria-label="Cancel">
           <X class="size-4" aria-hidden="true" />
         </button>
       </div>
@@ -255,10 +255,10 @@
         />
         <div class="flex items-center gap-1.5">
           <input class={fieldClass} type="text" bind:value={imageAlt} placeholder="Alt text" aria-label="Image alt text" />
-          <button type="button" class="rounded-lg bg-zinc-900 p-2 text-zinc-50 transition hover:bg-zinc-800" onclick={applyImage} aria-label="Insert image">
+          <button type="button" class="rounded-lg bg-zinc-900 dark:bg-zinc-100 p-2 text-zinc-50 dark:text-zinc-900 transition hover:bg-zinc-800 dark:hover:bg-zinc-200" onclick={applyImage} aria-label="Insert image">
             <Check class="size-4" aria-hidden="true" />
           </button>
-          <button type="button" class="rounded-lg p-2 text-zinc-400 transition hover:bg-zinc-100 hover:text-zinc-900" onclick={() => (imageOpen = false)} aria-label="Cancel">
+          <button type="button" class="rounded-lg p-2 text-zinc-400 dark:text-zinc-500 transition hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100" onclick={() => (imageOpen = false)} aria-label="Cancel">
             <X class="size-4" aria-hidden="true" />
           </button>
         </div>
@@ -267,7 +267,7 @@
   </div>
 
   <!-- Canvas: same width and styling as the published page -->
-  <div class="h-[60vh] min-h-80 overflow-y-auto bg-zinc-50/50 px-5 py-8 sm:px-8 sm:py-10 lg:h-[68vh]">
+  <div class="h-[60vh] min-h-80 overflow-y-auto bg-zinc-50/50 dark:bg-zinc-900/50 px-5 py-8 sm:px-8 sm:py-10 lg:h-[68vh]">
     <div class="mx-auto w-full max-w-xl">
       {#if header}
         <div class="mb-8">{@render header()}</div>
@@ -278,7 +278,7 @@
     </div>
   </div>
 
-  <div class="flex items-center justify-between border-t border-zinc-200 px-4 py-2 text-xs text-zinc-400">
+  <div class="flex items-center justify-between border-t border-zinc-200 dark:border-zinc-800 px-4 py-2 text-xs text-zinc-400 dark:text-zinc-500">
     <span>{words} {words === 1 ? 'word' : 'words'}</span>
     <span class="hidden sm:inline">Rich text · saved as markdown</span>
   </div>
@@ -299,8 +299,16 @@
     color: #d4d4d8; /* zinc-300 */
   }
 
+  :global([data-theme='dark'] .ProseMirror p.is-editor-empty:first-child::before) {
+    color: #52525b; /* zinc-600 */
+  }
+
   :global(.ProseMirror .ProseMirror-selectednode) {
     outline: 2px solid #18181b; /* zinc-900 */
     outline-offset: 2px;
+  }
+
+  :global([data-theme='dark'] .ProseMirror .ProseMirror-selectednode) {
+    outline-color: #fafafa; /* zinc-50 */
   }
 </style>

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import ImageViewer from '$lib/components/ImageViewer.svelte';
+  import ThemeToggle from '$lib/components/ThemeToggle.svelte';
   import { page } from '$app/state';
   import { getWeatherString } from '$lib/weatherString';
   import {
@@ -83,12 +84,14 @@
 
 <a
 	href="#profile"
-	class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-zinc-900 focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-zinc-50"
+	class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-zinc-900 focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-zinc-50 dark:focus:bg-zinc-100 dark:focus:text-zinc-900"
 >
 	Skip to content
 </a>
 
-<div class="flex min-h-screen flex-col bg-zinc-100 font-[Google_Sans] text-zinc-900">
+<ThemeToggle />
+
+<div class="flex min-h-screen flex-col bg-zinc-100 font-[Google_Sans] text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
 	<main class="flex-1 px-5 py-12 sm:py-16">
 		<div class="rise mx-auto flex w-full flex-col gap-10 {isWide ? 'max-w-5xl' : 'max-w-xl'}">
 			{@render children()}
@@ -96,10 +99,10 @@
 	</main>
 
 	<footer class="pb-10 text-center w-full flex flex-col justify-center items-center align-middle">
-		<p class="text-xs text-zinc-400 max-w-xs sm:max-w-none mb-2">
+		<p class="text-xs text-zinc-400 dark:text-zinc-500 max-w-xs sm:max-w-none mb-2">
 			{weatherString}
 		</p>
-		<p class="text-xs text-zinc-400">
+		<p class="text-xs text-zinc-400 dark:text-zinc-500">
 			Made with <span aria-hidden="true">♥︎</span><span class="sr-only">love</span> by Angel Diaz
 		</p>
 	</footer>

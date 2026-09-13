@@ -9,9 +9,40 @@
 
 <!-- Styles for rendered markdown -->
 <style>
+  /* Every color below goes through a variable so the dark theme only has to
+     restate the palette, not the rules. Code blocks stay dark in both themes --
+     the highlighter ships a single dark theme (see svelte.config.js). */
   .md-content {
+    --md-body: #52525b; /* zinc-600 */
+    --md-heading: #18181b; /* zinc-900 */
+    --md-muted: #71717a; /* zinc-500 */
+    --md-rule: #e4e4e7; /* zinc-200 */
+    --md-quote-bar: #d4d4d8; /* zinc-300 */
+    --md-link: #18181b; /* zinc-900 */
+    --md-link-hover: #52525b; /* zinc-600 */
+    --md-link-underline: #d4d4d8; /* zinc-300 */
+    --md-link-underline-hover: #71717a; /* zinc-500 */
+    --md-code-bg: #e4e4e7; /* zinc-200 */
+    --md-code-text: #18181b; /* zinc-900 */
+
     color: #3f3f46; /* zinc-700 */
     font-family: 'Google Sans', sans-serif;
+  }
+
+  :global([data-theme='dark']) .md-content {
+    --md-body: #d4d4d8; /* zinc-300 */
+    --md-heading: #fafafa; /* zinc-50 */
+    --md-muted: #a1a1aa; /* zinc-400 */
+    --md-rule: #27272a; /* zinc-800 */
+    --md-quote-bar: #3f3f46; /* zinc-700 */
+    --md-link: #fafafa; /* zinc-50 */
+    --md-link-hover: #a1a1aa; /* zinc-400 */
+    --md-link-underline: #52525b; /* zinc-600 */
+    --md-link-underline-hover: #a1a1aa; /* zinc-400 */
+    --md-code-bg: #27272a; /* zinc-800 */
+    --md-code-text: #fafafa; /* zinc-50 */
+
+    color: #d4d4d8; /* zinc-300 */
   }
 
   /* Typography */
@@ -19,7 +50,7 @@
   .md-content :global(h2),
   .md-content :global(h3),
   .md-content :global(h4) {
-    color: #18181b; /* zinc-900 */
+    color: var(--md-heading);
     margin-top: 2.5rem;
     margin-bottom: 1rem;
     line-height: 1.2;
@@ -45,22 +76,22 @@
     font-size: 1.0625rem;
     line-height: 1.75;
     margin-bottom: 1.5rem;
-    color: #52525b; /* zinc-600 */
+    color: var(--md-body);
   }
 
   /* Links */
   .md-content :global(a) {
     font-weight: 700;
-    color: #18181b; /* zinc-900 */
+    color: var(--md-link);
     text-decoration-line: underline;
     text-underline-offset: 4px;
-    text-decoration-color: #d4d4d8; /* zinc-300 */
+    text-decoration-color: var(--md-link-underline);
     transition: color 0.2s, text-decoration-color 0.2s;
   }
 
   .md-content :global(a:hover) {
-    color: #52525b; /* zinc-600 */
-    text-decoration-color: #71717a; /* zinc-500 */
+    color: var(--md-link-hover);
+    text-decoration-color: var(--md-link-underline-hover);
   }
 
   /* Lists */
@@ -70,7 +101,7 @@
     padding-left: 1.5rem;
     font-size: 1.0625rem;
     line-height: 1.75;
-    color: #52525b; /* zinc-600 */
+    color: var(--md-body);
   }
 
   .md-content :global(ul) {
@@ -87,12 +118,12 @@
 
   /* Quotes */
   .md-content :global(blockquote) {
-    border-left: 2px solid #d4d4d8; /* zinc-300 */
+    border-left: 2px solid var(--md-quote-bar);
     padding-left: 1.5rem;
     margin: 2rem 0;
     font-style: italic;
     font-size: 1.1875rem;
-    color: #71717a; /* zinc-500 */
+    color: var(--md-muted);
   }
 
   /* Media */
@@ -116,13 +147,19 @@
     line-height: 1.5;
   }
 
+  /* On the dark page the block would blend into the background, so it picks up
+     a border instead of relying on the color difference alone. */
+  :global([data-theme='dark']) .md-content :global(pre) {
+    border: 1px solid #27272a; /* zinc-800 */
+  }
+
   .md-content :global(code) {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    background-color: #e4e4e7; /* zinc-200 */
+    background-color: var(--md-code-bg);
     padding: 0.2em 0.4em;
     border-radius: 3px;
     font-size: 0.85em;
-    color: #18181b; /* zinc-900 */
+    color: var(--md-code-text);
   }
 
   .md-content :global(pre code) {
@@ -137,7 +174,7 @@
   /* Dividers */
   .md-content :global(hr) {
     border: 0;
-    border-top: 1px solid #e4e4e7; /* zinc-200 */
+    border-top: 1px solid var(--md-rule);
     margin: 3rem auto;
     width: 60%;
   }

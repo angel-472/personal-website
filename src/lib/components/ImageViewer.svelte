@@ -197,7 +197,7 @@
     onclick={handleBackdropClick}
     onwheel={handleWheel}
     transition:fade={{ duration: 150 }}
-    class="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-zinc-900/70 touch-none select-none"
+    class="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-zinc-900/70 touch-none select-none dark:bg-black/80"
   >
     <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
     <img

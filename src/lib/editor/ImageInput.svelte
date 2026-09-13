@@ -35,12 +35,12 @@
 
 {#snippet thumbnail(src: string)}
   <span
-    class="flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-zinc-200 bg-zinc-100"
+    class="flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-800"
   >
     {#if src}
       <img class="size-full object-cover" src={src} alt="" />
     {:else}
-      <ImageIcon class="size-4 text-zinc-300" aria-hidden="true" />
+      <ImageIcon class="size-4 text-zinc-300 dark:text-zinc-600" aria-hidden="true" />
     {/if}
   </span>
 {/snippet}
@@ -52,7 +52,7 @@
         {@render thumbnail(item)}
         <input
           id={index === 0 ? id : undefined}
-          class="min-w-0 flex-1 rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-2 text-sm transition placeholder:text-zinc-300 focus:border-zinc-400 focus:bg-white focus:outline-none"
+          class="min-w-0 flex-1 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800 px-3 py-2 text-sm transition placeholder:text-zinc-300 dark:placeholder:text-zinc-600 focus:border-zinc-400 dark:focus:border-zinc-600 focus:bg-white dark:focus:bg-zinc-700 focus:outline-none"
           type="text"
           value={item}
           oninput={(event) => update(index, event.currentTarget.value)}
@@ -64,7 +64,7 @@
         <div class="flex shrink-0 flex-col">
           <button
             type="button"
-            class="rounded-md p-0.5 text-zinc-300 transition hover:text-zinc-900 disabled:opacity-30 disabled:hover:text-zinc-300"
+            class="rounded-md p-0.5 text-zinc-300 dark:text-zinc-600 transition hover:text-zinc-900 dark:hover:text-zinc-100 disabled:opacity-30 disabled:hover:text-zinc-300 dark:disabled:hover:text-zinc-600"
             onclick={() => move(index, -1)}
             disabled={index === 0}
             aria-label="Move image {index + 1} up"
@@ -73,7 +73,7 @@
           </button>
           <button
             type="button"
-            class="rounded-md p-0.5 text-zinc-300 transition hover:text-zinc-900 disabled:opacity-30 disabled:hover:text-zinc-300"
+            class="rounded-md p-0.5 text-zinc-300 dark:text-zinc-600 transition hover:text-zinc-900 dark:hover:text-zinc-100 disabled:opacity-30 disabled:hover:text-zinc-300 dark:disabled:hover:text-zinc-600"
             onclick={() => move(index, 1)}
             disabled={index === items.length - 1}
             aria-label="Move image {index + 1} down"
@@ -83,7 +83,7 @@
         </div>
         <button
           type="button"
-          class="shrink-0 rounded-lg p-2 text-zinc-300 transition hover:bg-zinc-100 hover:text-zinc-900"
+          class="shrink-0 rounded-lg p-2 text-zinc-300 dark:text-zinc-600 transition hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100"
           onclick={() => remove(index)}
           aria-label="Remove image {index + 1}"
         >
@@ -94,7 +94,7 @@
 
     <button
       type="button"
-      class="flex items-center justify-center gap-1.5 rounded-xl border border-dashed border-zinc-300 px-3 py-2 text-xs font-bold text-zinc-400 transition hover:border-zinc-900 hover:text-zinc-900"
+      class="flex items-center justify-center gap-1.5 rounded-xl border border-dashed border-zinc-300 dark:border-zinc-700 px-3 py-2 text-xs font-bold text-zinc-400 dark:text-zinc-500 transition hover:border-zinc-900 dark:hover:border-zinc-100 hover:text-zinc-900 dark:hover:text-zinc-100"
       onclick={addRow}
     >
       <Plus class="size-4" aria-hidden="true" />
@@ -106,7 +106,7 @@
     {@render thumbnail(value as string)}
     <input
       {id}
-      class="min-w-0 flex-1 rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-2 text-sm transition placeholder:text-zinc-300 focus:border-zinc-400 focus:bg-white focus:outline-none"
+      class="min-w-0 flex-1 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800 px-3 py-2 text-sm transition placeholder:text-zinc-300 dark:placeholder:text-zinc-600 focus:border-zinc-400 dark:focus:border-zinc-600 focus:bg-white dark:focus:bg-zinc-700 focus:outline-none"
       type="text"
       bind:value
       {placeholder}

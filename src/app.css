@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Dark mode is an explicit choice stored in localStorage rather than a media
+   query, so the switcher can override the OS. The pre-paint script in
+   src/app.html stamps data-theme on <html> before anything renders. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 /* disable double tap zoom */
 :root {
   touch-action: pan-x pan-y;
@@ -10,6 +15,10 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 2rem;
   background-color: #f4f4f5; /* zinc-100, avoids white flash before paint */
+}
+
+html[data-theme="dark"] {
+  background-color: #09090b; /* zinc-950, same trick for the dark theme */
 }
 
 h1 {

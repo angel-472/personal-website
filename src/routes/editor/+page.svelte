@@ -222,31 +222,31 @@
   <!-- Library -->
   <div class="flex flex-col gap-6">
     <header class="flex flex-col">
-      <p class="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">Content editor</p>
+      <p class="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500">Content editor</p>
       <h1 class="mt-2 text-2xl font-bold sm:text-3xl">Projects &amp; posts</h1>
-      <p class="mt-2 max-w-md text-sm leading-relaxed text-zinc-500">
+      <p class="mt-2 max-w-md text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
         Edit an existing file or start a new one, then export the markdown into the repo.
       </p>
     </header>
 
     {#if draft}
-      <div class="flex flex-wrap items-center gap-3 rounded-2xl border border-zinc-900 bg-zinc-900 px-5 py-4 text-zinc-50 shadow-sm">
+      <div class="flex flex-wrap items-center gap-3 rounded-2xl border border-zinc-900 dark:border-zinc-100 bg-zinc-900 dark:bg-zinc-100 px-5 py-4 text-zinc-50 dark:text-zinc-900 shadow-sm">
         <div class="min-w-0 flex-1">
           <p class="text-sm font-bold">Unsaved draft</p>
-          <p class="truncate text-xs text-zinc-400">
+          <p class="truncate text-xs text-zinc-400 dark:text-zinc-500">
             {KINDS[draft.kind].label} · {docTitle(draft)}
           </p>
         </div>
         <button
           type="button"
-          class="shrink-0 rounded-xl bg-zinc-50 px-3 py-2 text-xs font-bold text-zinc-900 transition duration-200 hover:bg-white"
+          class="shrink-0 rounded-xl bg-zinc-50 dark:bg-zinc-800 px-3 py-2 text-xs font-bold text-zinc-900 dark:text-zinc-100 transition duration-200 hover:bg-white dark:hover:bg-zinc-900"
           onclick={resumeDraft}
         >
           Continue
         </button>
         <button
           type="button"
-          class="shrink-0 rounded-xl p-2 text-zinc-400 transition duration-200 hover:bg-zinc-800 hover:text-zinc-50"
+          class="shrink-0 rounded-xl p-2 text-zinc-400 dark:text-zinc-500 transition duration-200 hover:bg-zinc-800 dark:hover:bg-zinc-200 hover:text-zinc-50 dark:hover:text-zinc-900"
           onclick={discardDraft}
           aria-label="Discard draft"
         >
@@ -256,13 +256,13 @@
     {/if}
 
     <!-- Kind switcher -->
-    <nav aria-label="Content type" class="grid grid-cols-2 gap-1 rounded-2xl bg-zinc-200/70 p-1">
+    <nav aria-label="Content type" class="grid grid-cols-2 gap-1 rounded-2xl bg-zinc-200/70 dark:bg-zinc-800/70 p-1">
       {#each KIND_LIST as option (option.id)}
         <button
           type="button"
           class="rounded-xl border px-4 py-2.5 text-center text-sm font-bold transition duration-200 {tab === option.id
-            ? 'border-zinc-200 bg-white text-zinc-900 shadow-sm'
-            : 'border-transparent text-zinc-400 hover:text-zinc-600'}"
+            ? 'border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 shadow-sm'
+            : 'border-transparent text-zinc-400 dark:text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-400'}"
           onclick={() => (tab = option.id)}
           aria-pressed={tab === option.id}
         >
@@ -274,11 +274,11 @@
     <div class="flex flex-col gap-3">
       <button
         type="button"
-        class="group flex items-center gap-4 rounded-2xl border border-dashed border-zinc-300 px-5 py-4 text-left transition duration-200 hover:border-zinc-900 hover:bg-white"
+        class="group flex items-center gap-4 rounded-2xl border border-dashed border-zinc-300 dark:border-zinc-700 px-5 py-4 text-left transition duration-200 hover:border-zinc-900 dark:hover:border-zinc-100 hover:bg-white dark:hover:bg-zinc-900"
         onclick={create}
       >
-        <Plus class="size-5 shrink-0 text-zinc-400 transition-colors duration-200 group-hover:text-zinc-900" aria-hidden="true" />
-        <span class="flex-1 text-sm font-bold text-zinc-500 transition-colors duration-200 group-hover:text-zinc-900">
+        <Plus class="size-5 shrink-0 text-zinc-400 dark:text-zinc-500 transition-colors duration-200 group-hover:text-zinc-900 dark:group-hover:text-zinc-100" aria-hidden="true" />
+        <span class="flex-1 text-sm font-bold text-zinc-500 dark:text-zinc-400 transition-colors duration-200 group-hover:text-zinc-900 dark:group-hover:text-zinc-100">
           New {KINDS[tab].label.toLowerCase()}
         </span>
       </button>
@@ -288,29 +288,29 @@
         {@const note = badge(entry)}
         <button
           type="button"
-          class="group flex items-center gap-4 rounded-2xl border border-zinc-200 bg-white px-5 py-4 text-left shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-zinc-900 hover:bg-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100"
+          class="group flex items-center gap-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-5 py-4 text-left shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-zinc-900 dark:hover:border-zinc-100 hover:bg-zinc-900 dark:hover:bg-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 dark:focus-visible:ring-zinc-100 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100"
           onclick={() => open(entry)}
         >
-          <Icon class="size-5 shrink-0 text-zinc-900 transition-colors duration-200 group-hover:text-zinc-50" aria-hidden="true" />
+          <Icon class="size-5 shrink-0 text-zinc-900 dark:text-zinc-100 transition-colors duration-200 group-hover:text-zinc-50 dark:group-hover:text-zinc-900" aria-hidden="true" />
           <span class="min-w-0 flex-1">
-            <span class="block truncate text-sm font-bold text-zinc-900 transition-colors duration-200 group-hover:text-zinc-50">
+            <span class="block truncate text-sm font-bold text-zinc-900 dark:text-zinc-100 transition-colors duration-200 group-hover:text-zinc-50 dark:group-hover:text-zinc-900">
               {docTitle(entry)}
             </span>
             {#if summary(entry)}
-              <span class="mt-0.5 block truncate text-xs text-zinc-400 transition-colors duration-200 group-hover:text-zinc-500">
+              <span class="mt-0.5 block truncate text-xs text-zinc-400 dark:text-zinc-500 transition-colors duration-200 group-hover:text-zinc-500 dark:group-hover:text-zinc-600">
                 {summary(entry)}
               </span>
             {/if}
           </span>
           {#if note}
-            <span class="hidden shrink-0 text-xs text-zinc-400 transition-colors duration-200 group-hover:text-zinc-500 sm:inline">
+            <span class="hidden shrink-0 text-xs text-zinc-400 dark:text-zinc-500 transition-colors duration-200 group-hover:text-zinc-500 dark:group-hover:text-zinc-600 sm:inline">
               {note}
             </span>
           {/if}
-          <Pencil class="size-4 shrink-0 text-zinc-300 transition-colors duration-200 group-hover:text-zinc-50" aria-hidden="true" />
+          <Pencil class="size-4 shrink-0 text-zinc-300 dark:text-zinc-600 transition-colors duration-200 group-hover:text-zinc-50 dark:group-hover:text-zinc-900" aria-hidden="true" />
         </button>
       {:else}
-        <p class="rounded-2xl border border-dashed border-zinc-300 px-5 py-8 text-center text-sm text-zinc-400">
+        <p class="rounded-2xl border border-dashed border-zinc-300 dark:border-zinc-700 px-5 py-8 text-center text-sm text-zinc-400 dark:text-zinc-500">
           No {KINDS[tab].plural.toLowerCase()} yet.
         </p>
       {/each}
@@ -319,10 +319,10 @@
 {:else}
   <!-- Editor -->
   <div class="flex flex-col gap-6">
-    <div class="sticky top-4 z-20 flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white/90 px-3 py-3 shadow-sm backdrop-blur sm:px-4">
+    <div class="sticky top-4 z-20 flex items-center gap-3 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/90 dark:bg-zinc-900/90 py-3 pl-3 pr-16 shadow-sm backdrop-blur sm:pl-4 xl:pr-4">
       <button
         type="button"
-        class="shrink-0 rounded-xl p-2 text-zinc-400 transition duration-200 hover:bg-zinc-100 hover:text-zinc-900"
+        class="shrink-0 rounded-xl p-2 text-zinc-400 dark:text-zinc-500 transition duration-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100"
         onclick={close}
         aria-label="Back to all files"
       >
@@ -331,14 +331,14 @@
 
       <div class="min-w-0 flex-1">
         <p class="truncate text-sm font-bold">{heading}</p>
-        <p class="truncate text-xs text-zinc-400">{kind.dir}/{doc.slug || '…'}.md</p>
+        <p class="truncate text-xs text-zinc-400 dark:text-zinc-500">{kind.dir}/{doc.slug || '…'}.md</p>
       </div>
 
       <button
         type="button"
         class="shrink-0 rounded-xl border p-2 transition duration-200 sm:px-3 {copyState === 'failed'
-          ? 'border-red-300 text-red-500'
-          : 'border-zinc-200 text-zinc-500 hover:border-zinc-900 hover:text-zinc-900'}"
+          ? 'border-red-300 dark:border-red-800 text-red-500 dark:text-red-400'
+          : 'border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 hover:border-zinc-900 dark:hover:border-zinc-100 hover:text-zinc-900 dark:hover:text-zinc-100'}"
         onclick={copyMarkdown}
         aria-label="Copy markdown"
         title={copyState === 'failed' ? 'Copying was blocked — use Export instead' : 'Copy markdown'}
@@ -359,7 +359,7 @@
 
       <button
         type="button"
-        class="shrink-0 rounded-xl bg-zinc-900 p-2 text-zinc-50 shadow-sm transition duration-200 hover:bg-zinc-800 disabled:cursor-not-allowed disabled:bg-zinc-300 sm:px-3"
+        class="shrink-0 rounded-xl bg-zinc-900 dark:bg-zinc-100 p-2 text-zinc-50 dark:text-zinc-900 shadow-sm transition duration-200 hover:bg-zinc-800 dark:hover:bg-zinc-200 disabled:cursor-not-allowed disabled:bg-zinc-300 dark:disabled:bg-zinc-700 sm:px-3"
         onclick={exportFile}
         disabled={!canExport}
         title="Export markdown file (⌘S)"
@@ -372,11 +372,11 @@
     </div>
 
     {#if titleMissing || slugError}
-      <p class="-mt-2 text-xs font-bold text-red-500">
+      <p class="-mt-2 text-xs font-bold text-red-500 dark:text-red-400">
         {titleMissing ? `A ${kind.titleKey} is required before exporting.` : slugError}
       </p>
     {:else if exported}
-      <p class="-mt-2 text-xs text-zinc-500">
+      <p class="-mt-2 text-xs text-zinc-500 dark:text-zinc-400">
         Downloaded <span class="font-bold">{exported}</span> — move it into
         <span class="font-bold">{kind.dir}/</span> to publish it.
       </p>

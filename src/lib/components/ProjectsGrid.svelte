@@ -16,8 +16,8 @@
   {#each PROJECTS as project (project.name ?? "")}
     {@const lang = project.lang ?? ""}
     {@const tagline = project.description ?? ""}
-    <button class="group overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:cursor-pointer text-left" onclick={() => selectProject(project)}>
-      <div class="relative aspect-video w-full overflow-hidden bg-zinc-100">
+    <button class="group overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:cursor-pointer text-left dark:border-zinc-800 dark:bg-zinc-900" onclick={() => selectProject(project)}>
+      <div class="relative aspect-video w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800">
         <img
           class="size-full object-cover transition duration-300"
           src={project.images !== undefined ? project.images[0]: ''}
@@ -25,19 +25,19 @@
           loading="lazy"
         />
         {#if lang}
-          <span class="absolute left-3 top-3 rounded-full bg-zinc-900/90 px-2.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-zinc-50 backdrop-blur">
+          <span class="absolute left-3 top-3 rounded-full bg-zinc-900/90 px-2.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-zinc-50 backdrop-blur dark:bg-zinc-100/90 dark:text-zinc-900">
             {lang}
           </span>
         {/if}
       </div>
       <div class="flex items-start gap-3 p-5">
         <div class="flex-1">
-          <h3 class="font-bold text-zinc-900">{project.name}</h3>
+          <h3 class="font-bold text-zinc-900 dark:text-zinc-100">{project.name}</h3>
           {#if tagline}
-            <p class="mt-1 text-sm leading-relaxed text-zinc-500">{tagline}</p>
+            <p class="mt-1 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">{tagline}</p>
           {/if}
         </div>
-        <ArrowUpRight class="mt-0.5 size-4 shrink-0 text-zinc-300 transition-colors duration-200 group-hover:text-zinc-900" aria-hidden="true" />
+        <ArrowUpRight class="mt-0.5 size-4 shrink-0 text-zinc-300 transition-colors duration-200 group-hover:text-zinc-900 dark:text-zinc-600 dark:group-hover:text-zinc-100" aria-hidden="true" />
       </div>
     </button>
   {/each}

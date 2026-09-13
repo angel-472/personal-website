@@ -23,7 +23,7 @@
 <!-- Profile -->
 <section id="profile" aria-labelledby="profile-name" class="flex flex-col items-center text-center">
   <img
-    class="size-28 rounded-full object-cover shadow-sm ring-4 ring-white"
+    class="size-28 rounded-full object-cover shadow-sm ring-4 ring-white dark:ring-zinc-800"
     src="/img/profile.jpeg"
     alt="Portrait of Angel Diaz"
     width="112"
@@ -33,10 +33,10 @@
   <h1 id="profile-name" class="mt-5 text-2xl font-bold sm:text-3xl">
     Angel Diaz
   </h1>
-  <p class="mt-1.5 text-sm font-bold text-zinc-700">
+  <p class="mt-1.5 text-sm font-bold text-zinc-700 dark:text-zinc-300">
     Full Stack Software Engineer<br>From Puerto Rico <span aria-hidden="true">🇵🇷</span>
   </p>
-  <p class="mt-3 max-w-xs text-sm leading-relaxed text-zinc-500">
+  <p class="mt-3 max-w-xs text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
     I build web apps end to end, from the UI down to the servers they run on.
   </p>
 </section>
@@ -46,9 +46,9 @@
 <div class="flex flex-col gap-2">
   <!-- Availability. The status is plain text so the only emphasis on the page
        lands on the one thing worth clicking. -->
-  <p class="pb-1 text-center text-sm text-zinc-500">Currently open to work.</p>
+  <p class="pb-1 text-center text-sm text-zinc-500 dark:text-zinc-400">Currently open to work.</p>
   <a
-    class="flex items-center justify-center gap-3 rounded-2xl bg-zinc-900 px-5 py-4 text-zinc-50 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100"
+    class="flex items-center justify-center gap-3 rounded-2xl bg-zinc-900 px-5 py-4 text-zinc-50 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white dark:focus-visible:ring-zinc-100 dark:focus-visible:ring-offset-zinc-950"
     href="mailto:hello@diaza.dev"
   >
     <Mail class="size-5 shrink-0" aria-hidden="true" />
@@ -60,14 +60,14 @@
     {#each socials as social (social.label)}
       {@const Icon = social.icon}
       <a
-        class="group flex items-center justify-center gap-2 rounded-xl border border-zinc-200 bg-white px-3 py-3.5 transition duration-200 hover:border-zinc-900 hover:bg-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100"
+        class="group flex items-center justify-center gap-2 rounded-xl border border-zinc-200 bg-white px-3 py-3.5 transition duration-200 hover:border-zinc-900 hover:bg-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-100 dark:hover:bg-zinc-100 dark:focus-visible:ring-zinc-100 dark:focus-visible:ring-offset-zinc-950"
         href={social.href}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="{social.label} — {social.handle} (opens in a new tab)"
       >
-        <Icon class="size-4 shrink-0 text-zinc-900 transition-colors duration-200 group-hover:text-zinc-50" aria-hidden="true" />
-        <span class="text-xs font-bold text-zinc-500 transition-colors duration-200 group-hover:text-zinc-50">
+        <Icon class="size-4 shrink-0 text-zinc-900 transition-colors duration-200 group-hover:text-zinc-50 dark:text-zinc-100 dark:group-hover:text-zinc-900" aria-hidden="true" />
+        <span class="text-xs font-bold text-zinc-500 transition-colors duration-200 group-hover:text-zinc-50 dark:text-zinc-400 dark:group-hover:text-zinc-900">
           {social.label}
         </span>
       </a>
@@ -78,13 +78,13 @@
 <!-- Projects / Posts -->
 <div class="flex flex-col gap-6">
   <!-- Switcher -->
-  <nav aria-label="Featured work" class="grid grid-cols-2 gap-1 rounded-2xl bg-zinc-200/70 p-1">
+  <nav aria-label="Featured work" class="grid grid-cols-2 gap-1 rounded-2xl bg-zinc-200/70 p-1 dark:bg-zinc-900">
     {#each tabs as tab (tab.href)}
       {@const isActive = currentTab === tab.href}
       <a
-        class="rounded-xl border px-4 py-2.5 text-center text-sm font-bold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100 {isActive
-          ? 'border-zinc-200 bg-white text-zinc-900 shadow-sm'
-          : 'border-transparent text-zinc-400 hover:text-zinc-600'}"
+        class="rounded-xl border px-4 py-2.5 text-center text-sm font-bold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100 dark:focus-visible:ring-zinc-100 dark:focus-visible:ring-offset-zinc-950 {isActive
+          ? 'border-zinc-200 bg-white text-zinc-900 shadow-sm dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100'
+          : 'border-transparent text-zinc-400 hover:text-zinc-600 dark:text-zinc-500 dark:hover:text-zinc-300'}"
         href={tab.href}
         aria-current={isActive ? "page" : undefined}
         data-sveltekit-noscroll

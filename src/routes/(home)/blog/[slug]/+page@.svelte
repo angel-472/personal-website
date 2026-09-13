@@ -11,7 +11,7 @@
 <article class="flex flex-col gap-8">
   <!-- Back to the posts list -->
   <a
-    class="group flex w-fit items-center gap-1.5 text-sm font-bold text-zinc-400 transition duration-200 hover:text-zinc-900"
+    class="group flex w-fit items-center gap-1.5 text-sm font-bold text-zinc-400 transition duration-200 hover:text-zinc-900 dark:text-zinc-500 dark:hover:text-zinc-100"
     href="/blog"
   >
     <ArrowLeft class="size-4 shrink-0 transition-transform duration-200 group-hover:-translate-x-0.5" aria-hidden="true" />
@@ -21,7 +21,10 @@
   <!-- Post header -->
   <header class="flex flex-col">
     <!-- Wraps as whole items, so the separator never starts a line -->
-    <p class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
+    <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">
+      {meta.title}
+    </h1>
+    <p class="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-bold uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500">
       {#if meta.creationDate}
         <span class="inline-flex items-center gap-x-2">
           {formatDateWords(meta.creationDate)}<span aria-hidden="true">·</span>
@@ -29,11 +32,8 @@
       {/if}
       <span>{meta.readTime} min read</span>
     </p>
-    <h1 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-      {meta.title}
-    </h1>
     {#if meta.excerpt}
-      <p class="mt-4 text-sm leading-relaxed text-zinc-500">
+      <p class="mt-4 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
         {meta.excerpt}
       </p>
     {/if}
@@ -54,7 +54,7 @@
   </MarkdownContent>
 
   <a
-    class="flex items-center gap-1 font-medium transition duration-200 hover:text-zinc-600"
+    class="flex items-center gap-1 font-medium transition duration-200 hover:text-zinc-600 dark:hover:text-zinc-400"
     href="/blog"
   >
     <ArrowLeft class="size-4 shrink-0" aria-hidden="true" /> Back to all posts

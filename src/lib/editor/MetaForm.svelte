@@ -21,26 +21,26 @@
   } = $props();
 
   const inputClass =
-    'w-full rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-2 text-sm transition placeholder:text-zinc-300 focus:border-zinc-400 focus:bg-white focus:outline-none';
+    'w-full rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800 px-3 py-2 text-sm transition placeholder:text-zinc-300 dark:placeholder:text-zinc-600 focus:border-zinc-400 dark:focus:border-zinc-600 focus:bg-white dark:focus:bg-zinc-700 focus:outline-none';
 </script>
 
 <aside
-  class="flex flex-col gap-5 rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm lg:sticky lg:top-24 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto"
+  class="flex flex-col gap-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-5 shadow-sm lg:sticky lg:top-24 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto"
 >
-  <h2 class="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
+  <h2 class="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500">
     {kind.label} details
   </h2>
 
   <!-- Filename -->
   <div class="flex flex-col gap-1.5">
-    <label class="text-xs font-bold text-zinc-700" for="field-slug">
+    <label class="text-xs font-bold text-zinc-700 dark:text-zinc-300" for="field-slug">
       Filename
-      <span class="text-zinc-300">*</span>
+      <span class="text-zinc-300 dark:text-zinc-600">*</span>
     </label>
-    <div class="flex items-center gap-1 rounded-xl border border-zinc-200 bg-zinc-50 pr-3 transition focus-within:border-zinc-400 focus-within:bg-white">
+    <div class="flex items-center gap-1 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800 pr-3 transition focus-within:border-zinc-400 dark:focus-within:border-zinc-600 focus-within:bg-white dark:focus-within:bg-zinc-700">
       <input
         id="field-slug"
-        class="min-w-0 flex-1 rounded-xl bg-transparent px-3 py-2 text-sm transition placeholder:text-zinc-300 focus:outline-none"
+        class="min-w-0 flex-1 rounded-xl bg-transparent px-3 py-2 text-sm transition placeholder:text-zinc-300 dark:placeholder:text-zinc-600 focus:outline-none"
         type="text"
         bind:value={slug}
         oninput={onslugedit}
@@ -49,12 +49,12 @@
         autocomplete="off"
         spellcheck="false"
       />
-      <span class="shrink-0 text-xs text-zinc-400">.md</span>
+      <span class="shrink-0 text-xs text-zinc-400 dark:text-zinc-500">.md</span>
     </div>
     {#if slugError}
-      <p class="text-xs font-bold text-red-500">{slugError}</p>
+      <p class="text-xs font-bold text-red-500 dark:text-red-400">{slugError}</p>
     {:else}
-      <p class="text-xs text-zinc-400">Saved to {kind.dir}/{slug || '…'}.md</p>
+      <p class="text-xs text-zinc-400 dark:text-zinc-500">Saved to {kind.dir}/{slug || '…'}.md</p>
     {/if}
   </div>
 
@@ -63,21 +63,21 @@
     <div class="flex flex-col gap-1.5">
       {#if field.type === 'boolean'}
         <div class="flex items-center justify-between gap-3">
-          <span class="text-xs font-bold text-zinc-700" id="{id}-label">{field.label}</span>
+          <span class="text-xs font-bold text-zinc-700 dark:text-zinc-300" id="{id}-label">{field.label}</span>
           <button
             type="button"
             role="switch"
             aria-checked={meta[field.key] === true}
             aria-labelledby="{id}-label"
-            class="relative h-6 w-11 shrink-0 rounded-full transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 {meta[
+            class="relative h-6 w-11 shrink-0 rounded-full transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 dark:focus-visible:ring-zinc-100 focus-visible:ring-offset-2 {meta[
               field.key
             ] === true
-              ? 'bg-zinc-900'
-              : 'bg-zinc-200'}"
+              ? 'bg-zinc-900 dark:bg-zinc-100'
+              : 'bg-zinc-200 dark:bg-zinc-700'}"
             onclick={() => (meta[field.key] = meta[field.key] !== true)}
           >
             <span
-              class="absolute top-0.5 size-5 rounded-full bg-white shadow-sm transition-all duration-200 {meta[
+              class="absolute top-0.5 size-5 rounded-full bg-white dark:bg-zinc-900 shadow-sm transition-all duration-200 {meta[
                 field.key
               ] === true
                 ? 'left-[1.375rem]'
@@ -86,9 +86,9 @@
           </button>
         </div>
       {:else}
-        <label class="text-xs font-bold text-zinc-700" for={id}>
+        <label class="text-xs font-bold text-zinc-700 dark:text-zinc-300" for={id}>
           {field.label}
-          {#if field.required}<span class="text-zinc-300">*</span>{/if}
+          {#if field.required}<span class="text-zinc-300 dark:text-zinc-600">*</span>{/if}
         </label>
 
         {#if field.type === 'textarea'}
@@ -125,7 +125,7 @@
       {/if}
 
       {#if field.help}
-        <p class="text-xs text-zinc-400">{field.help}</p>
+        <p class="text-xs text-zinc-400 dark:text-zinc-500">{field.help}</p>
       {/if}
     </div>
   {/each}

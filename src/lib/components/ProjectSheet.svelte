@@ -124,25 +124,25 @@
 
   <!-- svelte-ignore a11y_no_static_element_interactions -->
   <!-- svelte-ignore a11y_click_events_have_key_events -->
-  <div class="fixed top-0 left-0 w-screen h-screen bg-zinc-900" bind:this={overlayElement} onclick={hide}>
+  <div class="fixed top-0 left-0 w-screen h-screen bg-zinc-900 dark:bg-black" bind:this={overlayElement} onclick={hide}>
   </div>
   <div
-    class="fixed bottom-0 left-1/2 -translate-x-1/2 h-[90dvh] w-full sm:w-2xl flex flex-col overflow-hidden rounded-2xl rounded-b-none border border-zinc-200 bg-zinc-50"
+    class="fixed bottom-0 left-1/2 -translate-x-1/2 h-[90dvh] w-full sm:w-2xl flex flex-col overflow-hidden rounded-2xl rounded-b-none border border-zinc-200 bg-zinc-50 text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100"
     bind:this={sheetElement}
   >
     {#if projectFile !== undefined}
       <div id="project-content" class="flex-1 overflow-y-auto px-8 pt-8 pb-16" aria-label={`Project post content for ${projectFile.metadata.name}`}>
           <!-- Close button -->
-          <button class="rounded-full absolute top-8 right-8 cursor-pointer bg-zinc-50 p-1" onclick={hide}><X size={24}/></button>
+          <button class="rounded-full absolute top-8 right-8 cursor-pointer bg-zinc-50 p-1 dark:bg-zinc-900" onclick={hide}><X size={24}/></button>
           <!-- Project Details & Images -->
           <h1 class="mt-2 text-4xl font-bold">{projectFile.metadata.name}</h1>
           <!-- Links (Demo / Github) -->
           <div class="flex gap-4">
             {#if projectFile.metadata.demo}
-              <a href={projectFile.metadata.demo} target="_blank" class="flex items-center gap-2 font-medium hover:text-zinc-600 transition-colors duration-200 mt-2"><ArrowUpRight size={16}/>Demo</a>
+              <a href={projectFile.metadata.demo} target="_blank" class="flex items-center gap-2 font-medium hover:text-zinc-600 transition-colors duration-200 mt-2 dark:hover:text-zinc-400"><ArrowUpRight size={16}/>Demo</a>
             {/if}
             {#if projectFile.metadata.github}
-              <a href={projectFile.metadata.github} target="_blank" class="flex items-center gap-2 font-medium hover:text-zinc-600 transition-colors duration-200 mt-2"><Github size={16}/>GitHub</a>
+              <a href={projectFile.metadata.github} target="_blank" class="flex items-center gap-2 font-medium hover:text-zinc-600 transition-colors duration-200 mt-2 dark:hover:text-zinc-400"><Github size={16}/>GitHub</a>
             {/if}
           </div>
           {#if projectFile.metadata.images?.length > 0}
