@@ -1,10 +1,10 @@
 ---
-title: "Cleaning Up AI Code: Replacing Prop Drilling With Signals"
+title: "From Prop Drilling to Observers: Cleaning Up AI Generated React Code"
 creationDate: "2026-08-07"
 excerpt: "In this blog post I talk about replacing the messy prop drilling AI wrote for my notes app with a small Observer pattern module, and the tradeoffs from using the pattern."
-published: true
-tags: ["React", "Architecture", "AI"]
 coverImageUrl: "/img/blog/react-observer-pattern/cover.png"
+published: false
+tags: ["React", "Architecture", "AI"]
 ---
 
 AI has advanced a lot in the last few years. It has gotten good enough at coding that we can now work alongside it and ship more than ever before, enough that a single developer like me can move at a speed that otherwise wouldn't be possible.
@@ -13,21 +13,25 @@ But shipping fast is not the same as shipping something you can live with. These
 
 Recently I used AI to build the UI mockup for a React based notes app I'm working on. It did a great job. The mockup worked like it was supposed to and looked the way I wanted it to for the moment. Then I sat down to read the code, because I wanted to actually understand the architecture I'd be working with for the next month.
 
-The code looked decent. That's the thing about AI though, it reliably lands on the average, the middle ground, whatever most codebases do. And what most React codebases do is prop drilling, passing the ability to modify state down into components as callbacks:
+## The Problem
 
-![Screenshot of prop drilling event functions](/img/blog/react-observer-pattern/01.png)![Screenshot of prop drilling event functions into a react component](/img/blog/react-observer-pattern/02.png)This works fine. But every new interaction meant threading another function from App.tsx through a screen, and sometimes through a sub-component below that, before it finally reached the button that actually needed it. Renaming a single event meant touching it in half a dozen places across two files. The prop lists stopped describing what a component *is* and started describing everything it might *do*. That's cognitive load and complexity, which is not what we want.
+he code looked decent. That's the thing about AI though, it reliably lands on the average, the middle ground, whatever most codebases do. And what most React codebases do is prop drilling, passing the ability to modify state down into components as callbacks:
+
+![Screenshot of prop drilling event functions](/img/blog/react-observer-pattern/01.png)![Screenshot of prop drilling event functions into a react component](/img/blog/react-observer-pattern/02.png)This works fine. But every new interaction meant threading another function from App.tsx through a screen, and sometimes through a sub-component below that, before it finally reached the button that actually needed it. Modifying a single event meant touching it in half a dozen places across two files. This adds cognitive load and complexity when working with the code, which is not what we want.
 
 ## How I solved the problem
 
 AI can help us generate code. What it will never replace is our ability to think through problems in our own ways.
 
-So I reached for something I already trust. signalManager.js is a tiny module I've carried into every personal project for years now, an implementation of the Observer pattern. It's about as simple as code gets and it has never let me down.
+signalManager.js is a tiny module I've carried into every personal project for years now, an implementation of the Observer pattern. It's about as simple as code gets and it has never let me down.
 
 The problem it solves shows up everywhere, in event driven systems, game engines, UI frameworks, servers. Modules that need to react to each other end up importing each other or threading state through middlemen, and the dependency graph knots up. With the Observer pattern, emitters announce events without knowing who listens, and listeners subscribe without needing the emitter to exist. Either side can be added, removed, or swapped in isolation without breaking the other.
 
+I chose this over useContext or Zustand not because those are worse, but because this pattern is framework agnostic and I've been using it for years. I already knew how it would hold up once the app got bigger.
+
 The whole thing is basically a map of signal names to callbacks:
 
-```js
+```javascript
 class SignalManager {
   constructor(){
     this.subs = {};
@@ -81,7 +85,7 @@ class SignalManager {
 
 That's it. That's the pattern. And it saves a lot of coupling and dependency tree complexity.
 
-In practice it means App.tsx can listen for changes to the state coming from anywhere below it, without passing down a function for every single operation possible. Components emit a signal carrying the data that describes what happened, and props go back to carrying data only, which is what they were good at in the first place.
+In practice it means App.tsx can listen for changes to the state coming from anywhere, without passing down a function for every single operation possible. Components emit a signal carrying the data that describes what happened, and props go back to carrying *data only*, which is what they were good at in the first place.
 
 ![Screenshot of how App.tsx subscribes to listen for intent to edit state](/img/blog/react-observer-pattern/03.png)![Screenshot of a diff of how code used to call a drilled function vs emitting a signal now](/img/blog/react-observer-pattern/04.png)And no, I didn't sit there doing the refactor by hand. I decided on the architecture, then handed the AI descriptive instructions on exactly what to change and where, and it did the mechanical work in a fraction of the time it would have taken me. That's the balance I think we should be aiming for. Make the analysis and the decisions yourself, hand off the typing when appropiate.
 

@@ -1,9 +1,22 @@
-import { mdsvex } from 'mdsvex';
 import adapter from "@sveltejs/adapter-cloudflare";
+
+import { mdsvex, escapeSvelte } from 'mdsvex';
+import { createHighlighter } from 'shiki/bundle/web'
 
 /** @type {import('mdsvex').MdsvexOptions} */
 const mdSvexOptions = {
 	extensions: ['.md'],
+	highlight: {
+		highlighter: async (code, lang = 'text') => {
+			const highlighter = await createHighlighter({
+				themes: ['one-dark-pro'],
+				langs: ['javascript', 'typescript']
+			})
+			await highlighter.loadLanguage('javascript', 'typescript')
+			const html = escapeSvelte(highlighter.codeToHtml(code, { lang, theme: 'one-dark-pro' }))
+			return `{@html \`${html}\` }`
+		}
+	},
 };
 
 /** @type {import('@sveltejs/kit').Config} */

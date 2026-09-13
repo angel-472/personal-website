@@ -129,8 +129,9 @@
     background-color: transparent;
     padding: 0;
     border-radius: 0;
-    font-size: 1em;
+    font-size: 0.85em;
     color: #f4f4f5; /* zinc-100 */
+    overflow-x: scroll;
   }
 
   /* Dividers */
