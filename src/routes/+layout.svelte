@@ -93,7 +93,7 @@
 
 <div class="flex min-h-screen flex-col bg-zinc-100 font-[Google_Sans] text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
 	<main class="flex-1 px-5 py-12 sm:py-16">
-		<div class="rise mx-auto flex w-full flex-col gap-10 {isWide ? 'max-w-5xl' : 'max-w-xl'}">
+		<div class="rise mx-auto flex w-full flex-col gap-10 {isWide ? 'max-w-5xl' : 'max-w-2xl'}">
 			{@render children()}
 		</div>
 	</main>
