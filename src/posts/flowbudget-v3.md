@@ -33,7 +33,7 @@ I found this approach more straightforward than trying to brute-force the soluti
 
 ## Improving your skills in the age of AI
 
-When implementing these new features, I wanted to intentionally avoid heavy AI use. *I was a little less reserved when it came to UX and design ideas*: I'd usually tell it what I wanted, and once it came up with a rough draft, I'd refine the design myself. I think the human in the loop is the most important part of the process, since we build things for humans.
+When implementing these new features, I wanted to intentionally avoid heavy AI use. *I was a little less reserved when it came to UX and design ideas*: I'd usually tell it what I wanted, and once it came up with a rough draft, I'd refine the design myself. I think the human in the loop is still the most important part of the process, since we build things for humans.
 
 Setting this intention and following through allowed me to strengthen my skills and logic. I think it's a good approach to take when building software, especially on personal projects.
 
