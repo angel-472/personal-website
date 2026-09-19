@@ -42,4 +42,4 @@ If you're learning something new or getting back into coding, don't let AI do al
 **Your brain and skills are your most important assets, keep them sharp.**
 
 
-[Try FlowBudget V3 →](https://flowbudget.pages.dev)
+[Try FlowBudget V3 →](https://flowbudget.diaza.dev)

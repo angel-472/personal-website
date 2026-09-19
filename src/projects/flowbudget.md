@@ -5,7 +5,7 @@ lang: "Svelte"
 images: ["/img/projects/flowbudget/01.png"]
 tags: ["Svelte", "TailwindCSS", "Vite", "Cloudflare Workers", "Supabase"]
 github: "https://github.com/angel-472/flowbudget"
-demo: "https://flowbudget.pages.dev/"
+demo: "https://flowbudget.diaza.dev/"
 priority: 1
 ---
 
@@ -29,4 +29,4 @@ I started this project in October 2025 with the help of AI tools to quickly buil
 
 
 <!-- keep this at the bottom for better UX -->
-[Try FlowBudget V3 →](https://flowbudget.pages.dev)
+[Try FlowBudget V3 →](https://flowbudget.diaza.dev)
