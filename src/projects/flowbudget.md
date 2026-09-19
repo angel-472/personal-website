@@ -24,7 +24,7 @@ I started this project in October 2025 with the help of AI tools to quickly buil
 
 - Added recurring expenses section which allows me to keep track of my recurring bills and when they will occur, this is a very helpful feature for keeping my finances organized.
 - Major improvements to the visual design and UX, including mobile navigation, color contrast, and navigation routing. That last one means refreshing the web app will get you back to exactly where you left off.
-- Read more about the new features and my approach to building them in this [blog post](https://angel472.com/blog/flowbudget-v3).
+- Read more about the new features and my approach to building them in this [blog post](/blog/flowbudget-v3).
 
 
 
