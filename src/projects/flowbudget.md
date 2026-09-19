@@ -28,5 +28,5 @@ I started this project in October 2025 with the help of AI tools to quickly buil
 
 
 
-
+<!-- keep this at the bottom for better UX -->
 [Try FlowBudget V3 →](https://flowbudget.pages.dev)
