@@ -136,6 +136,11 @@
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
   }
 
+  /* ImageViewer opens any image in here on click (see its handleAnyClick) */
+  .md-content :global(img) {
+    cursor: zoom-in;
+  }
+
   /* Code */
   .md-content :global(pre) {
     background-color: #18181b; /* zinc-900, matches site's dark accent elements */

@@ -135,7 +135,7 @@
           <!-- Close button -->
           <button class="rounded-full absolute top-8 right-8 cursor-pointer bg-zinc-50 p-1 dark:bg-zinc-900" onclick={hide}><X size={24}/></button>
           <!-- Project Details & Images -->
-          <h1 class="mt-2 text-4xl font-bold">{projectFile.metadata.name}</h1>
+          <h1 class="mt-2 text-2xl sm:text-3xl font-bold">{projectFile.metadata.name}</h1>
           <!-- Links (Demo / Github) -->
           <div class="flex gap-4">
             {#if projectFile.metadata.demo}

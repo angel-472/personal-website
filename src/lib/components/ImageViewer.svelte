@@ -78,10 +78,12 @@
     };
   }
 
-  // --- Global click: enlarge an image that opts in via allow_enlarge ---
+  // --- Global click: enlarge an image that opts in via allow_enlarge, plus
+  // every image inside rendered markdown (mdsvex can't set the attribute) ---
   function handleAnyClick(event) {
     if (imgSrc !== "") return; // viewer already open; handled below
-    if (event.target.localName === 'img' && event.target.hasAttribute('allow_enlarge')) {
+    if (event.target.localName !== 'img') return;
+    if (event.target.hasAttribute('allow_enlarge') || event.target.closest('.md-content')) {
       open(event.target.src);
     }
   }

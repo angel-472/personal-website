@@ -1,8 +1,10 @@
 ---
 name: "Packet Wisp"
 description: "Schema-based binary encoding for real-time apps that cuts bandwidth usage."
-images: ["/img/projects/packet-wisp/diagram.gif", "/img/projects/packet-wisp/packetencoder.png"]
-lang: "JavaScript"
+images: ["/img/projects/packet-wisp/diagram.gif"]
+lang: "TypeScript"
+github: "https://github.com/angel-472/packetwisp"
+tags: ["JavaScript", "TypeScript", "WebSocket", "Binary Encoding"]
 ---
 
 A binary encoding system for real-time apps, built in JavaScript to cut down on bandwidth usage.
@@ -11,6 +13,7 @@ Real-time web apps like online games burn through bandwidth thanks to the overhe
 
 The result was a significant drop in bandwidth usage while staying easy to use and compatible enough to build apps quickly.
 
-Performance tests and results are coming to this post later on.
+![Packet Wisp Benchmarks](/img/projects/packet-wisp/benchmarks-light.png)
 
-**This page will likely become a blog post about the system, since the project is being absorbed into something larger that will be listed here instead.**
+<!-- keep this at the bottom for better UX -->
+[See More on GitHub →](https://github.com/angel-472/packetwisp) 
