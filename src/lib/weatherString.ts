@@ -43,5 +43,5 @@
 
 		const [description, emoji] = getCondition(code, isNight);
 
-		return `${description} this beautiful ${timeLabel}. San Juan, Puerto Rico. ${temp}°F. ${emoji}`;
+		return `${description} this beautiful ${timeLabel}. San Juan, Puerto Rico. ${temp}°F ${emoji}`;
 	}
